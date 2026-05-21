@@ -129,12 +129,6 @@ export default function Services() {
             </div>
           </div>
         </div>
-
-        <div className="page-container mt-8 flex justify-end">
-          <Link to="/services" className="btn-primary">
-            Explore All Services
-          </Link>
-        </div>
       </section>
 
       <section className="relative min-h-[420px] overflow-hidden py-24">

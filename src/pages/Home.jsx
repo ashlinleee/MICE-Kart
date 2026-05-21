@@ -98,39 +98,6 @@ export default function Home() {
 
         <Marquee />
 
-        <section className="overflow-hidden backdrop-blur-sm">
-          <GalleryMarquee
-            images={collageImages.slice(0, 6)}
-            className="rounded-none border-0 shadow-none"
-          />
-        </section>
-
-        <section className="section-pad !py-12 sm:!py-14 bg-ink-950/55 backdrop-blur-[1px]">
-          <div className="page-container grid grid-cols-2 gap-6 sm:grid-cols-4">
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-6 text-center backdrop-blur-sm"
-              >
-                <AnimatedCounter
-                  value={s.value}
-                  suffix={s.suffix}
-                  animate={s.animate}
-                  className="text-white"
-                />
-                <p className="mt-2 text-xs font-bold uppercase tracking-widest text-blue-200">
-                  {s.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
         <section className="section-pad bg-white/75 backdrop-blur-sm">
           <div className="page-container grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <motion.div
@@ -161,7 +128,40 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden section-pad bg-ink-950/70 backdrop-blur-[1px]">
+        <section className="overflow-hidden backdrop-blur-sm">
+          <GalleryMarquee
+            images={collageImages.slice(0, 6)}
+            className="rounded-none border-0 shadow-none"
+          />
+        </section>
+
+        <section className="section-pad !pt-0 !pb-12 sm:!pb-14 bg-ink-950/55 backdrop-blur-[1px]">
+          <div className="page-container grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-6 text-center backdrop-blur-sm"
+              >
+                <AnimatedCounter
+                  value={s.value}
+                  suffix={s.suffix}
+                  animate={s.animate}
+                  className="text-white"
+                />
+                <p className="mt-2 text-xs font-bold uppercase tracking-widest text-blue-200">
+                  {s.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden py-10 sm:py-12 bg-ink-950/70 backdrop-blur-[1px]">
           <div className="page-container relative z-10">
             <SectionHeading
               label="Why Choose Us"
@@ -191,11 +191,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-pad bg-white/80 backdrop-blur-sm">
+        <section className="py-8 sm:py-20 bg-white/80 backdrop-blur-sm">
           <div className="page-container">
             <SectionHeading
               label="What We Do"
-              title="Services"
+              title="Our Services"
               subtitle="End-to-end MICE, corporate travel and event solutions to make every business trip and gathering seamless and impactful."
               center
             />
@@ -228,13 +228,10 @@ export default function Home() {
             >
               <div className="flex w-max items-stretch gap-4">
                 {[...services, ...services, ...services].map((s, i) => (
-                  <motion.div
+                  <div
                     key={s.title}
                     custom={i}
                     variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
                     className="w-[82vw] max-w-[360px] shrink-0 snap-start sm:w-[420px]"
                   >
                     <Link
@@ -245,6 +242,8 @@ export default function Home() {
                         <SafeImage
                           src={s.image}
                           alt={s.title}
+                          loading="eager"
+                          decoding="sync"
                           className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/25 to-transparent" />
@@ -261,15 +260,10 @@ export default function Home() {
                         </p>
                       </div>
                     </Link>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
-          </div>
-          <div className="page-container mt-8 flex justify-end">
-            <Link to="/services" className="btn-primary">
-              Explore All Services
-            </Link>
           </div>
         </section>
 

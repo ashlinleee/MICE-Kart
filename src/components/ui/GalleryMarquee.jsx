@@ -9,10 +9,8 @@ export default function GalleryMarquee({ images = [], className = "" }) {
 
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl 5 py-14 shadow-card ${className}`}
+      className={`relative overflow-hidden rounded-3xl border border-ink-200 bg-transparent py-16 shadow-card ${className}`}
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 sm:w-32" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 sm:w-32" />
       <div className="flex w-max animate-marquee items-center gap-5 whitespace-nowrap px-4">
         {doubled.map((src, index) => (
           <motion.div
@@ -27,7 +25,7 @@ export default function GalleryMarquee({ images = [], className = "" }) {
             whileHover={{ rotateX: 6, rotateY: -6, y: -8, scale: 1.02 }}
             className="perspective-1000"
           >
-            <div className="h-56 w-56 shrink-0 overflow-hidden rounded-3xl bg-ink-50 shadow-sm [transform-style:preserve-3d] sm:h-52 sm:w-72 lg:h-56 lg:w-[24rem] xl:h-64 xl:w-[32rem]">
+            <div className="h-64 w-64 shrink-0 overflow-hidden rounded-3xl bg-ink-50 shadow-sm [transform-style:preserve-3d] sm:h-72 sm:w-80 lg:h-80 lg:w-[28rem] xl:h-[22rem] xl:w-[36rem]">
               <SafeImage
                 src={src}
                 alt=""

@@ -9,9 +9,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import PageBanner from "../components/PageBanner";
-import SectionHeading from "../components/SectionHeading";
 import GlowCard from "../components/ui/GlowCard";
-import SafeImage from "../components/ui/SafeImage";
 import { images, company } from "../data/siteContent";
 
 export default function Contact() {
@@ -24,9 +22,8 @@ export default function Contact() {
       />
 
       <section className="section-pad bg-ink-50">
-        <div className="page-container grid gap-8 lg:grid-cols-2 lg:gap-12 items-start">
+        <div className="page-container grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12 items-start">
           <div className="space-y-6">
-            <SectionHeading label="Reach Us" title="Get in Touch" />
             <div className="space-y-4">
               {[
                 {

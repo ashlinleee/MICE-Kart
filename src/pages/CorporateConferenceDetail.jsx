@@ -236,12 +236,6 @@ export default function CorporateConferenceDetail() {
               >
                 Get a Custom Proposal <ArrowRight size={20} />
               </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white/80 bg-white/10 px-10 py-4 text-lg font-bold text-white backdrop-blur-sm transition hover:bg-white/20"
-              >
-                Explore All Services
-              </Link>
             </div>
         </div>
       </section>
