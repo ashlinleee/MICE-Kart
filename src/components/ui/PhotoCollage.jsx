@@ -16,7 +16,9 @@ export default function PhotoCollage({ images: photos, className = "" }) {
           transition={{ delay: i * 0.05 }}
           whileHover={{ scale: 1.03, rotate: i % 2 === 0 ? 1 : -1 }}
           className={`overflow-hidden rounded-2xl border border-ink-200/80 shadow-card ${
-            i === 0 ? "col-span-2 row-span-2 aspect-square sm:aspect-auto sm:min-h-[280px]" : "aspect-square"
+            i === 0
+              ? "col-span-2 row-span-2 aspect-square sm:aspect-auto sm:min-h-[240px] lg:min-h-[280px]"
+              : "aspect-square"
           }`}
         >
           <SafeImage src={src} alt="" className="h-full w-full object-cover" />

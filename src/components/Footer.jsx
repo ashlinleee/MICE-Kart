@@ -113,7 +113,7 @@ export default function Footer() {
               <iframe
                 title="MICEkart office location"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(company.mapQuery)}&output=embed`}
-                className="h-56 w-full border-0"
+                className="h-48 w-full border-0 sm:h-56"
                 aria-label="MICEkart location map"
               />
             </div>

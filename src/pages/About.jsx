@@ -146,7 +146,7 @@ export default function About() {
 
             {/* Second row: center any remaining cards (e.g., 2 cards centered) */}
             {team.length > 3 && (
-              <div className="mt-6 flex justify-center gap-6">
+              <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:justify-center">
                 {team.slice(3).map((member, i) => (
                   <div
                     key={member.name}

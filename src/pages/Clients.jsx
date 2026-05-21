@@ -48,8 +48,8 @@ export default function Clients() {
               key={`client-row-${rowIndex}`}
               className="relative overflow-hidden"
             >
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-24" />
 
               <div className="w-full overflow-hidden bg-ink-50/80 py-4">
                 <div
@@ -63,7 +63,7 @@ export default function Clients() {
                     <motion.div
                       key={`${client.name}-${index}`}
                       whileHover={{ y: -4, scale: 1.02 }}
-                      className="flex h-[110px] w-[220px] shrink-0 items-center justify-center rounded-3xl border border-white bg-white px-4 shadow-card"
+                      className="flex h-[90px] w-[180px] shrink-0 items-center justify-center rounded-3xl border border-white bg-white px-4 shadow-card sm:h-[110px] sm:w-[220px]"
                       title={client.name}
                     >
                       <img
@@ -91,9 +91,17 @@ export default function Clients() {
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {uspTopics.map((topic, index) => (
-              <GlowCard key={topic.title} delay={index * 0.08} className="h-full">
-                <h3 className="font-display text-xl text-ink-950">{topic.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600">{topic.desc}</p>
+              <GlowCard
+                key={topic.title}
+                delay={index * 0.08}
+                className="h-full"
+              >
+                <h3 className="font-display text-xl text-ink-950">
+                  {topic.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  {topic.desc}
+                </p>
               </GlowCard>
             ))}
           </div>
@@ -108,7 +116,7 @@ export default function Clients() {
         />
         <div className="overlay-hero absolute inset-0" />
         <div className="page-container relative z-10 text-center">
-          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
             Partner with MICEkart
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-blue-100">

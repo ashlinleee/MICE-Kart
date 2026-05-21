@@ -34,7 +34,7 @@ export default function TestimonialCarousel({
           className="relative"
         >
           <Quote className="absolute -top-2 left-0 h-10 w-10 text-orange-300/40" />
-          <p className="pt-8 text-lg leading-8 text-blue-50 sm:text-xl sm:leading-9">
+          <p className="pt-7 text-base leading-7 text-blue-50 sm:pt-8 sm:text-xl sm:leading-9">
             {current.quote}
           </p>
           <div className="mt-8 flex items-center gap-4">

@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import PageBanner, { BannerCTA } from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import Marquee from "../components/ui/Marquee";
@@ -31,6 +36,44 @@ const fadeUp = {
 };
 
 export default function Home() {
+  const servicesScrollRef = useRef(null);
+  const isAdjustingRef = useRef(false);
+
+  const adjustServicesLoop = () => {
+    const container = servicesScrollRef.current;
+    if (!container || isAdjustingRef.current) return;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    if (maxScroll <= 0) return;
+
+    const edge = 40;
+    if (
+      container.scrollLeft <= edge ||
+      container.scrollLeft >= maxScroll - edge
+    ) {
+      isAdjustingRef.current = true;
+      container.scrollLeft = maxScroll / 2;
+      requestAnimationFrame(() => {
+        isAdjustingRef.current = false;
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (!servicesScrollRef.current) return;
+    const container = servicesScrollRef.current;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    if (maxScroll > 0) {
+      container.scrollLeft = maxScroll / 2;
+    }
+  }, []);
+
+  const handleServicesScroll = (direction) => {
+    if (!servicesScrollRef.current) return;
+    const delta = direction === "left" ? -320 : 320;
+    servicesScrollRef.current.scrollBy({ left: delta, behavior: "smooth" });
+    window.setTimeout(adjustServicesLoop, 350);
+  };
+
   return (
     <div className="relative">
       <div className="pointer-events-none fixed inset-0 -z-10">
@@ -55,10 +98,10 @@ export default function Home() {
 
         <Marquee />
 
-        <section className="overflow-hidden bg-white/80 py-10 backdrop-blur-sm sm:py-14 lg:py-16">
+        <section className="overflow-hidden backdrop-blur-sm">
           <GalleryMarquee
             images={collageImages.slice(0, 6)}
-            className="rounded-none border-x-0 border-y border-ink-200 bg-white/90 shadow-none"
+            className="rounded-none border-0 shadow-none"
           />
         </section>
 
@@ -156,9 +199,35 @@ export default function Home() {
               subtitle="End-to-end MICE, corporate travel and event solutions to make every business trip and gathering seamless and impactful."
               center
             />
-            <div className="-mx-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none]">
-              <div className="flex min-w-max gap-4">
-                {services.map((s, i) => (
+          </div>
+          <div className="relative mt-8">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 bg-gradient-to-r from-white via-white/90 to-transparent sm:w-24" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-14 bg-gradient-to-l from-white via-white/90 to-transparent sm:w-24" />
+
+            <button
+              type="button"
+              onClick={() => handleServicesScroll("left")}
+              className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-ink-200 bg-white/90 p-2 text-ink-700 shadow-card transition hover:bg-white sm:left-4"
+              aria-label="Scroll services left"
+            >
+              <ChevronLeft size={24} strokeWidth={1.5} />
+            </button>
+            <button
+              type="button"
+              onClick={() => handleServicesScroll("right")}
+              className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-ink-200 bg-white/90 p-2 text-ink-700 shadow-card transition hover:bg-white sm:right-4"
+              aria-label="Scroll services right"
+            >
+              <ChevronRight size={24} strokeWidth={1.5} />
+            </button>
+
+            <div
+              ref={servicesScrollRef}
+              onScroll={adjustServicesLoop}
+              className="flex items-stretch gap-4 overflow-x-auto px-4 pb-4 scroll-smooth sm:px-6 lg:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              <div className="flex w-max items-stretch gap-4">
+                {[...services, ...services, ...services].map((s, i) => (
                   <motion.div
                     key={s.title}
                     custom={i}
@@ -196,11 +265,11 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="mt-8 flex justify-end">
-              <Link to="/services" className="btn-primary">
-                Explore All Services
-              </Link>
-            </div>
+          </div>
+          <div className="page-container mt-8 flex justify-end">
+            <Link to="/services" className="btn-primary">
+              Explore All Services
+            </Link>
           </div>
         </section>
 
@@ -220,7 +289,7 @@ export default function Home() {
 
         <section className="relative min-h-[280px] overflow-hidden py-12 lg:py-16 bg-ink-950/70 backdrop-blur-[1px]">
           <div className="page-container relative z-10 text-center">
-            <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
+            <h2 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
               Let's plan your next corporate journey
             </h2>
             <p className="mt-4 text-blue-100">Speak with our team in Mumbai.</p>

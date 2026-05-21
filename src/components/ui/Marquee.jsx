@@ -7,7 +7,10 @@ export default function Marquee() {
     <div className="relative overflow-hidden border-y border-ink-200 bg-ink-50 py-4">
       <div className="flex animate-marquee whitespace-nowrap">
         {doubled.map((item, i) => (
-          <span key={`${item}-${i}`} className="mx-8 text-sm font-semibold uppercase tracking-widest text-ink-600">
+          <span
+            key={`${item}-${i}`}
+            className="mx-6 text-xs font-semibold uppercase tracking-widest text-ink-600 sm:mx-8 sm:text-sm"
+          >
             {item}
           </span>
         ))}

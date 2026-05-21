@@ -1,13 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function PageHero({ badge, badgeIcon: BadgeIcon, title, subtitle, children }) {
+export default function PageHero({
+  badge,
+  badgeIcon: BadgeIcon,
+  title,
+  subtitle,
+  children,
+}) {
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative overflow-hidden bg-mesh-warm py-24 sm:py-28"
+      className="relative overflow-hidden bg-mesh-warm py-20 sm:py-28"
     >
       <div className="noise-overlay absolute inset-0" />
       <motion.div
@@ -39,7 +45,7 @@ export default function PageHero({ badge, badgeIcon: BadgeIcon, title, subtitle,
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="max-w-4xl text-5xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl"
+          className="max-w-4xl text-4xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl"
         >
           {title}
         </motion.h1>
@@ -48,7 +54,7 @@ export default function PageHero({ badge, badgeIcon: BadgeIcon, title, subtitle,
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl"
+            className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:mt-6 sm:text-xl"
           >
             {subtitle}
           </motion.p>
