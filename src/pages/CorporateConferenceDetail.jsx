@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle, Sparkles } from "../components/Icons";
 import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 

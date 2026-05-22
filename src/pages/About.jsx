@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Globe, ShieldCheck, ThumbsUp } from "lucide-react";
+import { Sparkles, Plane, ShieldCheck, ThumbsUp } from "../components/Icons";
 import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import TeamCard from "../components/ui/TeamCard";
@@ -60,7 +60,7 @@ const whyChooseDetails = [
   {
     title: "Global Reach",
     desc: "Seamless domestic execution across major Indian business hubs and international programs custom-made for global impact.",
-    icon: Globe,
+    icon: Plane,
     color: "text-blue-500 bg-blue-500/10 border-blue-500/20",
   },
   {

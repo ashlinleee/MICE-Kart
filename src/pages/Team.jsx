@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Users } from "lucide-react";
+import { Users } from "../components/Icons";
 import PageHero from "../components/PageHero";
 
 const team = [

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "../components/Icons";
 import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import SafeImage from "../components/ui/SafeImage";

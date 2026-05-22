@@ -77,7 +77,7 @@ export const collageImages = [
 ];
 
 export const stats = [
-  { value: "2019", label: "Established", suffix: "", animate: false },
+  { value: "2019", label: "Established", suffix: "", animate: true, extraSpins: 2 },
   { value: "20", label: "Enterprise Clients", suffix: "+", animate: true },
   { value: "15", label: "Years Industry Experience", suffix: "+", animate: true },
   { value: "9", label: "Core Service Lines", suffix: "", animate: true },

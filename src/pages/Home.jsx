@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  CheckCircle,
   ChevronLeft,
   ChevronRight,
-} from "lucide-react";
+  BadgeCheck,
+  Plane,
+  Users,
+  ShieldCheck,
+} from "../components/Icons";
 import PageBanner, { BannerCTA } from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import Marquee from "../components/ui/Marquee";
@@ -38,6 +41,12 @@ const fadeUp = {
 export default function Home() {
   const servicesScrollRef = useRef(null);
   const isAdjustingRef = useRef(false);
+  const whyChoosePoints = [
+    { icon: BadgeCheck, text: whyChooseUs[0] },
+    { icon: Plane, text: whyChooseUs[1] },
+    { icon: Users, text: whyChooseUs[2] },
+    { icon: ShieldCheck, text: whyChooseUs[3] },
+  ];
 
   const adjustServicesLoop = () => {
     const container = servicesScrollRef.current;
@@ -135,6 +144,42 @@ export default function Home() {
           />
         </section>
 
+        <section className="relative overflow-hidden py-10 sm:py-12 bg-ink-950/70 backdrop-blur-[1px]">
+          <div className="page-container relative z-10">
+            <SectionHeading
+              label="Why Choose Us"
+              title="Why Choose Us"
+              light
+              center
+            />
+            <ul className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+              {whyChoosePoints.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.li
+                    key={item}
+                    custom={i}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <Icon
+                      size={40}
+                      className="text-orange-400"
+                      strokeWidth={1.7}
+                    />
+                    <span className="mt-4 max-w-[18rem] text-lg font-semibold leading-8 text-blue-50">
+                      {item.text}
+                    </span>
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+
         <section className="section-pad !pt-0 !pb-12 sm:!pb-14 bg-ink-950/55 backdrop-blur-[1px]">
           <div className="page-container grid grid-cols-2 gap-6 sm:grid-cols-4">
             {stats.map((s, i) => (
@@ -151,6 +196,7 @@ export default function Home() {
                   value={s.value}
                   suffix={s.suffix}
                   animate={s.animate}
+                  extraSpins={s.extraSpins ?? 0}
                   className="text-white"
                 />
                 <p className="mt-2 text-xs font-bold uppercase tracking-widest text-blue-200">
@@ -158,36 +204,6 @@ export default function Home() {
                 </p>
               </motion.div>
             ))}
-          </div>
-        </section>
-
-        <section className="relative overflow-hidden py-10 sm:py-12 bg-ink-950/70 backdrop-blur-[1px]">
-          <div className="page-container relative z-10">
-            <SectionHeading
-              label="Why Choose Us"
-              title="Why Choose MICEkart"
-              light
-              center
-            />
-            <ul className="mx-auto grid max-w-3xl gap-3">
-              {whyChooseUs.map((item, i) => (
-                <motion.li
-                  key={item}
-                  custom={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur-md"
-                >
-                  <CheckCircle
-                    size={20}
-                    className="mt-0.5 shrink-0 text-orange-400"
-                  />
-                  <span className="text-blue-50">{item}</span>
-                </motion.li>
-              ))}
-            </ul>
           </div>
         </section>
 

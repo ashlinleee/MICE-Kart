@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "../Icons";
 import SafeImage from "./SafeImage";
 
 export default function BentoCard({
@@ -42,6 +42,11 @@ export default function BentoCard({
     </motion.div>
   );
 
-  if (to) return <Link to={to} className="block no-underline">{content}</Link>;
+  if (to)
+    return (
+      <Link to={to} className="block no-underline">
+        {content}
+      </Link>
+    );
   return content;
 }

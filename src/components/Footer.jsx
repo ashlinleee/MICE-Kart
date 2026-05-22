@@ -8,7 +8,7 @@ import {
   Instagram,
   Facebook,
   Linkedin,
-} from "lucide-react";
+} from "./Icons";
 import { company } from "../data/siteContent";
 
 const links = [

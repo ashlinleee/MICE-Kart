@@ -1,5 +1,5 @@
 import React from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkles } from "./Icons";
 
 const defaultItems = [
   "Corporate Conferences",
@@ -16,7 +16,9 @@ export default function MarqueeStrip({ items = defaultItems, className = "" }) {
   const doubled = [...items, ...items];
 
   return (
-    <div className={`relative overflow-hidden border-y border-brand-100/60 bg-gradient-to-r from-brand-50/80 via-white/90 to-accent-50/80 py-4 ${className}`}>
+    <div
+      className={`relative overflow-hidden border-y border-brand-100/60 bg-gradient-to-r from-brand-50/80 via-white/90 to-accent-50/80 py-4 ${className}`}
+    >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#faf8f5] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#faf8f5] to-transparent" />
       <div className="marquee-track">

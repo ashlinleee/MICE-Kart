@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X } from "./Icons";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "../../logo.jpg";
 

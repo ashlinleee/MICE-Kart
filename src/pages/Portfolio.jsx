@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Camera, Sparkles } from "lucide-react";
+import { ArrowRight, Camera, Sparkles } from "../components/Icons";
 import PageHero from "../components/PageHero";
 
 const projects = [

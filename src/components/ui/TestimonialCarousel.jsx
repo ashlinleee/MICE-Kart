@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote } from "../Icons";
 
 export default function TestimonialCarousel({
   testimonials = [],

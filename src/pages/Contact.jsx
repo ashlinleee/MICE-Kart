@@ -7,7 +7,7 @@ import {
   Instagram,
   Facebook,
   Linkedin,
-} from "lucide-react";
+} from "../components/Icons";
 import PageBanner from "../components/PageBanner";
 import GlowCard from "../components/ui/GlowCard";
 import { images, company } from "../data/siteContent";
