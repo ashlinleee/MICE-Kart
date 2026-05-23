@@ -16,8 +16,7 @@ export const company = {
 
 export const about = {
   intro: [
-    "MICEkart Pvt. Ltd. is an integrated corporate travel solutions and event company, helping businesses plan seamless travel experiences, meetings, conferences, and corporate events across India and internationally.",
-    "Since its incorporation in 2019, the company has built a strong reputation as a trusted travel partner for corporations.",
+    "MICEkart Pvt. Ltd. is an integrated corporate travel solutions and event management company, helping businesses plan seamless travel experiences, meetings, conferences, exhibitions, incentive programs, and corporate events across India and internationally. We focus on delivering well-coordinated, customized solutions that simplify travel and event planning while ensuring efficiency, quality, and memorable experiences."
   ],
   offerings: [
     "We offer end-to-end solutions for sales incentive trips, meetings and conference arrangements, events and exhibitions, merchandising requirements, team-building activities, artist requirements, and more.",
@@ -79,7 +78,7 @@ export const collageImages = [
 export const stats = [
   { value: "2019", label: "Established", suffix: "", animate: true, extraSpins: 2 },
   { value: "20", label: "Enterprise Clients", suffix: "+", animate: true },
-  { value: "15", label: "Years Industry Experience", suffix: "+", animate: true },
+  { value: "100", label: "Successful Events", suffix: "+", animate: true },
   { value: "9", label: "Core Service Lines", suffix: "", animate: true },
 ];
 

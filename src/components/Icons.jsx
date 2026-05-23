@@ -13,6 +13,7 @@ export {
   Camera,
   ThumbsUp,
   CheckCircle,
+  Clock3,
   Menu,
   X,
   ArrowUpRight,
