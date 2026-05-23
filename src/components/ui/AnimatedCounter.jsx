@@ -17,11 +17,13 @@ function RollingDigit({ digit, direction, order = 0, active, extraLoops = 0 }) {
   const [toY, setToY] = useState(0);
   const [duration, setDuration] = useState(0.5);
   const previousRef = useRef(digit);
+  const extraLoopUsedRef = useRef(false);
 
   useEffect(() => {
     const previous = previousRef.current;
     if (!active) {
       previousRef.current = digit;
+      extraLoopUsedRef.current = false;
       setStrip([digit]);
       setFromY(0);
       setToY(0);
@@ -39,7 +41,10 @@ function RollingDigit({ digit, direction, order = 0, active, extraLoops = 0 }) {
     const stepCount = isAscending
       ? (digit - previous + 10) % 10
       : (previous - digit + 10) % 10;
-    const totalSteps = stepCount + Math.max(0, extraLoops) * 10;
+    const usableExtraLoops = extraLoopUsedRef.current
+      ? 0
+      : Math.max(0, extraLoops);
+    const totalSteps = stepCount + usableExtraLoops * 10;
 
     if (totalSteps === 0) {
       previousRef.current = digit;
@@ -65,8 +70,10 @@ function RollingDigit({ digit, direction, order = 0, active, extraLoops = 0 }) {
       setToY(0);
     }
 
-    setDuration(Math.min(2.8, 0.9 + totalSteps * 0.06));
+    // Keep each digit transition brief so counters can settle quickly.
+    setDuration(Math.min(0.28, 0.14 + totalSteps * 0.012));
     previousRef.current = digit;
+    extraLoopUsedRef.current = true;
   }, [active, digit, direction, extraLoops]);
 
   return (
@@ -82,7 +89,7 @@ function RollingDigit({ digit, direction, order = 0, active, extraLoops = 0 }) {
         animate={{ y: `${toY}%`, rotateX: 0 }}
         transition={{
           duration,
-          delay: order * 0.07,
+          delay: order * 0.04,
           ease: [0.16, 1, 0.3, 1],
         }}
         className="relative z-[1] block"
@@ -110,17 +117,20 @@ export default function AnimatedCounter({
   const targetNumber = useMemo(() => cleanNumber(value), [value]);
   const [started, setStarted] = useState(!shouldAnimate);
   const [digitCount, setDigitCount] = useState(() => `${targetNumber}`.length);
-  const [displayDigits, setDisplayDigits] = useState(() => {
-    if (!shouldAnimate) return toDigits(targetNumber);
-    return toDigits(0, `${targetNumber}`.length);
-  });
+  const [currentNumber, setCurrentNumber] = useState(() =>
+    shouldAnimate ? 0 : targetNumber,
+  );
+  const [displayDigits, setDisplayDigits] = useState(() =>
+    toDigits(shouldAnimate ? 0 : targetNumber, `${targetNumber}`.length),
+  );
   const [digitDirections, setDigitDirections] = useState(() =>
     toDigits(0, `${targetNumber}`.length).map((_, idx) =>
       idx % 2 === 0 ? 1 : -1,
     ),
   );
   const ref = useRef(null);
-  const previousTargetRef = useRef(targetNumber);
+  const previousDisplayNumberRef = useRef(shouldAnimate ? 0 : targetNumber);
+  const animationFromRef = useRef(shouldAnimate ? 0 : targetNumber);
 
   useEffect(() => {
     setDigitCount((current) => Math.max(current, `${targetNumber}`.length));
@@ -129,14 +139,24 @@ export default function AnimatedCounter({
   useEffect(() => {
     if (!shouldAnimate) {
       setStarted(true);
+      setCurrentNumber(targetNumber);
       setDisplayDigits(toDigits(targetNumber, digitCount));
       setDigitDirections(
         toDigits(targetNumber, digitCount).map((_, idx) =>
           idx % 2 === 0 ? 1 : -1,
         ),
       );
-      previousTargetRef.current = targetNumber;
+      previousDisplayNumberRef.current = targetNumber;
+      animationFromRef.current = targetNumber;
       return;
+    }
+
+    // If the element is already in the viewport on mount, start immediately.
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        setStarted(true);
+      }
     }
 
     const observer = new IntersectionObserver(
@@ -153,15 +173,56 @@ export default function AnimatedCounter({
   }, [digitCount, shouldAnimate, targetNumber]);
 
   useEffect(() => {
+    if (!shouldAnimate) return;
     if (!started) return;
 
-    const previousTarget = previousTargetRef.current;
-    const nextDigits = toDigits(targetNumber, digitCount);
-    const prevDigits = toDigits(previousTarget, digitCount);
+    const from = animationFromRef.current;
+    const to = targetNumber;
+    if (from === to) return;
+
+    let rafId = 0;
+    let startTime = 0;
+    const distance = Math.abs(to - from);
+    const maxTotalMs = 2000;
+    const settleBudgetMs = 450;
+    const countDurationCapMs = maxTotalMs - settleBudgetMs;
+    const duration = Math.min(countDurationCapMs, 700 + distance * 2);
+    const visualSteps = Math.max(8, Math.min(18, Math.round(distance / 130)));
+
+    const easeOutCubic = (t) => 1 - (1 - t) ** 3;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      const eased = easeOutCubic(progress);
+      const stepped =
+        progress < 1 ? Math.round(eased * visualSteps) / visualSteps : 1;
+      const nextValue = Math.round(from + (to - from) * stepped);
+
+      setCurrentNumber((prev) => (prev === nextValue ? prev : nextValue));
+
+      if (progress < 1) {
+        rafId = window.requestAnimationFrame(step);
+      } else {
+        animationFromRef.current = to;
+      }
+    };
+
+    rafId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(rafId);
+  }, [shouldAnimate, started, targetNumber]);
+
+  useEffect(() => {
+    const nextDigits = toDigits(currentNumber, digitCount);
+    const previousDigits = toDigits(
+      previousDisplayNumberRef.current,
+      digitCount,
+    );
 
     setDigitDirections(
       nextDigits.map((nextDigit, index) => {
-        const prevDigit = prevDigits[index] ?? 0;
+        const prevDigit = previousDigits[index] ?? 0;
         const upSteps = (nextDigit - prevDigit + 10) % 10;
         const downSteps = (prevDigit - nextDigit + 10) % 10;
         const shortestDirection = upSteps <= downSteps ? 1 : -1;
@@ -169,8 +230,8 @@ export default function AnimatedCounter({
       }),
     );
     setDisplayDigits(nextDigits);
-    previousTargetRef.current = targetNumber;
-  }, [digitCount, started, targetNumber]);
+    previousDisplayNumberRef.current = currentNumber;
+  }, [currentNumber, digitCount]);
 
   if (!shouldAnimate) {
     return (

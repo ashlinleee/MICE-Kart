@@ -76,7 +76,7 @@ export const collageImages = [
 ];
 
 export const stats = [
-  { value: "2019", label: "Established", suffix: "", animate: true, extraSpins: 2 },
+  { value: "2019", label: "Established", suffix: "", animate: true, extraSpins: 0 },
   { value: "20", label: "Enterprise Clients", suffix: "+", animate: true },
   { value: "100", label: "Successful Events", suffix: "+", animate: true },
   { value: "9", label: "Core Service Lines", suffix: "", animate: true },

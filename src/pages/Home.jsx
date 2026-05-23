@@ -11,6 +11,7 @@ import {
   ShieldCheck,
 } from "../components/Icons";
 import PageBanner, { BannerCTA } from "../components/PageBanner";
+import heroPic from "/hero-image.png";
 import SectionHeading from "../components/SectionHeading";
 import Marquee from "../components/ui/Marquee";
 import GalleryMarquee from "../components/ui/GalleryMarquee";
@@ -96,7 +97,7 @@ export default function Home() {
 
       <div className="relative z-10">
         <PageBanner
-          image={images.hero}
+          image={heroPic}
           title={company.slogan}
           subtitle="Integrated corporate travel solutions and events across India and internationally."
           tall
@@ -157,7 +158,7 @@ export default function Home() {
                 const Icon = item.icon;
                 return (
                   <motion.li
-                    key={item}
+                    key={`${item.text}-${i}`}
                     custom={i}
                     variants={fadeUp}
                     initial="hidden"
@@ -245,7 +246,7 @@ export default function Home() {
               <div className="flex w-max items-stretch gap-4">
                 {[...services, ...services, ...services].map((s, i) => (
                   <div
-                    key={s.title}
+                    key={`${s.title}-${i}`}
                     custom={i}
                     variants={fadeUp}
                     className="w-[82vw] max-w-[360px] shrink-0 snap-start sm:w-[420px]"

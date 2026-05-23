@@ -5,7 +5,7 @@ import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import SafeImage from "../components/ui/SafeImage";
 import GlowCard from "../components/ui/GlowCard";
-import { BadgeCheck, Sparkles, Users, ArrowRight } from "../components/Icons";
+import { ArrowRight } from "../components/Icons";
 import { images, clientLogos, usp } from "../data/siteContent";
 
 const fadeUp = {
@@ -41,24 +41,6 @@ const uspTopics = [
   },
 ];
 
-const clientHighlights = [
-  {
-    icon: BadgeCheck,
-    title: "Trusted delivery",
-    desc: "Consistent execution for enterprise travel and events.",
-  },
-  {
-    icon: Users,
-    title: "Team-friendly planning",
-    desc: "Programs shaped around stakeholders, delegates, and leadership.",
-  },
-  {
-    icon: Sparkles,
-    title: "Polished experience",
-    desc: "Small details that make every program feel considered.",
-  },
-];
-
 export default function Clients() {
   return (
     <div>
@@ -67,42 +49,6 @@ export default function Clients() {
         title="Our Clients"
         subtitle="Trusted by leading enterprises across financial services and corporate India."
       />
-
-      <section className="relative section-pad !pt-8 !pb-10 bg-white">
-        <div className="pointer-events-none absolute left-0 top-0 -z-10 h-40 w-40 rounded-full bg-blue-200/30 blur-3xl" />
-        <div className="pointer-events-none absolute right-0 top-20 -z-10 h-52 w-52 rounded-full bg-orange-200/30 blur-3xl" />
-        <div className="page-container grid gap-4 md:grid-cols-3">
-          {clientHighlights.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.title}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={index}
-                whileHover={{ y: -6, scale: 1.01 }}
-                className="group rounded-2xl border border-ink-200 bg-ink-50/80 p-5 shadow-card transition will-change-transform"
-              >
-                <div className="flex items-start gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-950 text-white shadow-lg shadow-blue-950/20 transition duration-300 group-hover:scale-110">
-                    <Icon size={20} />
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-semibold text-ink-950">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-600">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
 
       <section className="bg-white pb-2 pt-2 sm:pb-20 lg:pb-6">
         {/* Full-bleed marquee of client logos */}

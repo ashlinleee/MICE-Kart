@@ -4,8 +4,6 @@ import {
   Phone,
   Mail,
   MapPin,
-  Clock3,
-  ShieldCheck,
   Instagram,
   Facebook,
   Linkedin,
@@ -23,24 +21,6 @@ const fadeUp = {
   }),
 };
 
-const contactHighlights = [
-  {
-    icon: Phone,
-    title: "Direct contact",
-    desc: company.phone,
-  },
-  {
-    icon: Clock3,
-    title: "Quick response",
-    desc: "Usually replies within one business day.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Corporate support",
-    desc: "Travel, events, and vendor coordination in one place.",
-  },
-];
-
 export default function Contact() {
   return (
     <div>
@@ -52,37 +32,6 @@ export default function Contact() {
 
       <section className="relative section-pad bg-ink-50">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-[radial-gradient(circle_at_top,rgba(30,64,175,0.14),transparent_70%)]" />
-        <div className="page-container -mt-10 mb-8 grid gap-4 md:grid-cols-3">
-          {contactHighlights.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.title}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                custom={index}
-                whileHover={{ y: -6, scale: 1.01 }}
-                className="group rounded-2xl border border-white/70 bg-white/90 p-5 shadow-card backdrop-blur-sm transition will-change-transform"
-              >
-                <div className="flex items-start gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-950 text-white shadow-lg shadow-blue-950/20 transition duration-300 group-hover:scale-110">
-                    <Icon size={20} />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-ink-950">
-                      {item.title}
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-600">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
 
         <div className="page-container grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12 items-start">
           <div className="space-y-6">
