@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Plane, ShieldCheck, ThumbsUp } from "../components/Icons";
+import { BarChart3, Headphones } from "lucide-react";
+import {
+  Sparkles,
+  Plane,
+  ShieldCheck,
+  ThumbsUp,
+  Users,
+  Eye,
+  Target,
+} from "../components/Icons";
 import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import TeamCard from "../components/ui/TeamCard";
@@ -21,24 +30,26 @@ function getTeamImage(member) {
   return member.image;
 }
 
+function hexToRgba(hex, alpha) {
+  const normalized = hex.replace("#", "");
+  const value = Number.parseInt(normalized, 16);
+  const red = (value >> 16) & 255;
+  const green = (value >> 8) & 255;
+  const blue = value & 255;
+
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+}
+
 const pillars = [
   {
-    title: "Mission",
-    text: mission,
-    image: images.travel,
-    color: "border-blue-700",
-  },
-  {
-    title: "Vision",
+    title: "Our Vision",
     text: vision,
-    image: images.incentive,
-    color: "border-emerald-600",
+    Icon: Eye,
   },
   {
-    title: "Company Goals",
-    text: usp,
-    image: images.office,
-    color: "border-indigo-700",
+    title: "Our Mission",
+    text: mission,
+    Icon: Target,
   },
 ];
 
@@ -47,86 +58,222 @@ const whyChooseDetails = [
     title: "Strategic Planning",
     desc: "Program-first planning that aligns travel and events with business outcomes, budgets, and timelines.",
     icon: Sparkles,
-    color: "text-orange-500 bg-orange-500/10 border-orange-500/20",
+    color: "#FF8A1E",
   },
   {
     title: "Execution Excellence",
     desc: "On-ground precision across logistics, venue coordination, vendor management, and delegate experience.",
     icon: Plane,
-    color: "text-blue-500 bg-blue-500/10 border-blue-500/20",
+    color: "#355DA8",
   },
   {
     title: "Personalized Experiences",
     desc: "Custom journeys and event formats tailored to audience profile, purpose, and brand tone.",
-    icon: ShieldCheck,
-    color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+    icon: Users,
+    color: "#FF8A1E",
   },
   {
     title: "Measurable Impact",
     desc: "Clear post-event reporting and insights to track engagement, outcomes, and ROI.",
-    icon: ThumbsUp,
-    color: "text-indigo-500 bg-indigo-500/10 border-indigo-500/20",
+    icon: BarChart3,
+    color: "#355DA8",
+  },
+  {
+    title: "End-to-End Support",
+    desc: "A dedicated team committed to seamless communication and 24/7 support.",
+    icon: Headphones,
+    color: "#FF8A1E",
   },
 ];
 
 export default function About() {
-  const introLeadClass =
-    "!text-lg !text-ink-900 !font-semibold border-l-4 border-orange-500 pl-4";
+  const introTextClass = "text-lg leading-8 text-ink-600";
 
   return (
     <div>
       <PageBanner
         image={images.heroAbout}
         title="About Us"
-        subtitle="MICEkart Pvt. Ltd. — trusted corporate travel and event partner since 2019."
+        subtitle="MICEkart Pvt. Ltd. a trusted corporate travel and event partner since 2019."
       />
 
-      {/* 1. About MICEkart */}
-      <section className="section-pad bg-white">
+      {/* 1. Who we are */}
+      <section className="section-pad py-[120px] bg-white">
         <div className="page-container">
-          <SectionHeading
-            label="Corporate Overview"
-            title="Integrated Corporate Travel & Events"
-          />
-          <div className="grid items-start gap-12 lg:grid-cols-2 mt-8">
+          <div className="grid items-center gap-8 lg:grid-cols-2">
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: -12 }}
+              whileInView={{ x: 0 }}
               viewport={{ once: true }}
-              className="photo-frame relative group overflow-hidden"
+              className="photo-frame relative group overflow-hidden rounded-3xl"
             >
               <SafeImage
-                src={images.conference}
-                alt="MICEkart events"
-                className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
+                src={images.office}
+                alt="MICEKART office"
+                className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105 rounded-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent" />
             </motion.div>
-            <div className="space-y-6 text-ink-600 leading-relaxed">
-              <p className={introLeadClass}>{about.intro[0]}</p>
-              <p className={introLeadClass}>{about.intro[1]}</p>
-              {about.offerings.map((p) => (
-                <p key={p.slice(0, 40)}>{p}</p>
-              ))}
-              <p>{about.closing}</p>
+
+            <div>
+              <div className="mb-4">
+                <span className="text-sm font-semibold text-orange-500 uppercase tracking-wider">
+                  WHO WE ARE
+                </span>
+              </div>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-blue-700 leading-tight">
+                Your Trusted Partner in Corporate Travel &amp; Events
+              </h2>
+              <p className="mt-4 text-base leading-7 text-ink-600 max-w-none">
+                MICEkart is an integrated corporate travel solutions and event
+                management company, helping businesses plan seamless travel
+                experiences, meetings, conferences, exhibitions, incentive
+                programs, and corporate events across India and internationally.
+              </p>
+              <ul className="mt-6 grid grid-cols-1 gap-3">
+                {[
+                  { label: "Corporate Travel", Icon: Plane },
+                  { label: "Conferences and Meetings", Icon: Users },
+                  { label: "Incentive Program", Icon: Sparkles },
+                  { label: "Event Management", Icon: ShieldCheck },
+                ].map(({ label, Icon }) => (
+                  <li key={label} className="flex items-start gap-4">
+                    <span className="mt-1 flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-blue-500 border border-blue-100">
+                      <Icon size={14} className="text-blue-500" />
+                    </span>
+                    <span className="text-base leading-6 text-ink-800">
+                      {label}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 lg:mt-10">
+            <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1fr_auto_1fr] lg:gap-4">
+              {/* Vision Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  scale: 1.02,
+                  borderColor: "#1B4DBA",
+                  boxShadow: "0_22px_60px_rgba(27,77,186,0.15)",
+                }}
+                transition={{ duration: 0.3 }}
+                className="rounded-[30px] border border-slate-200/70 bg-[linear-gradient(180deg,#ffffff_0%,#f3f8ff_100%)] p-6 shadow-[0_22px_60px_rgba(15,23,42,0.06)] flex items-center"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#1B4DBA] shadow-sm">
+                    <Eye size={36} />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-[#10245A]">
+                      Our Vision
+                    </h3>
+                    <p className="mt-3 text-[15px] leading-7 text-slate-700">
+                      {vision}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Center Logo Connector */}
+              <div className="relative flex items-center justify-center py-6 lg:py-0">
+                <motion.div
+                  initial={{ scale: 1 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="relative flex items-center justify-center"
+                >
+                  {/* removed extra backdrop circle to avoid duplicate ring */}
+                  <div
+                    className="relative flex items-center justify-center rounded-full"
+                    style={{ width: 280, height: 280 }}
+                  >
+                    <div
+                      className="absolute rounded-full"
+                      style={{
+                        width: 280,
+                        height: 280,
+                        background:
+                          "conic-gradient(from 200deg, #1B4DBA 0deg 120deg, rgba(200,200,200,0.35) 120deg 210deg, #FF7A1A 210deg 360deg)",
+                        WebkitMask:
+                          "radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 12px))",
+                        mask: "radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 12px))",
+                        boxShadow:
+                          "inset 0 14px 30px rgba(255,255,255,0.35), 0 18px 28px rgba(15,23,42,0.06)",
+                      }}
+                    />
+                    <span className="absolute left-[-8px] top-1/2 z-10 h-5 w-5 -translate-y-1/2 rounded-full bg-[#1B4DBA] shadow-[0_0_0_8px_rgba(27,77,186,0.06)]" />
+                    <span className="absolute right-[-8px] top-1/2 z-10 h-5 w-5 -translate-y-1/2 rounded-full bg-[#FF7A1A] shadow-[0_0_0_8px_rgba(255,122,26,0.06)]" />
+                    <div className="relative z-20 flex h-[220px] w-[220px] items-center justify-center rounded-full bg-white/72 p-6 shadow-[0_20px_45px_rgba(15,23,42,0.12)] ring-1 ring-white/60 backdrop-blur-md">
+                      <SafeImage
+                        src="/micekart-logo.png"
+                        alt="MICEkart logo"
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Mission Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  scale: 1.02,
+                  borderColor: "#FF7A1A",
+                  boxShadow: "0_22px_60px_rgba(255,122,26,0.15)",
+                }}
+                transition={{ duration: 0.3 }}
+                className="rounded-[30px] border border-slate-200/70 bg-[linear-gradient(180deg,#fffaf5_0%,#ffffff_100%)] p-6 shadow-[0_22px_60px_rgba(15,23,42,0.06)] flex items-center"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-orange-50 text-[#FF7A1A] shadow-sm">
+                    <Target size={36} />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-[#FF7A1A]">
+                      Our Mission
+                    </h3>
+                    <p className="mt-3 text-[15px] leading-7 text-slate-700">
+                      {mission}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* 2. Leadership & Team */}
-      <section className="surface-dark section-pad">
+      {/* 3. Leadership & Team */}
+      <section className="section-pad pt-4 pb-10 bg-white">
         <div className="page-container">
-          <SectionHeading
-            label="Our Team"
-            title="Leadership & Team"
-            light
-            center
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group text-center"
+          >
+            <h2 className="font-display text-3xl font-bold text-[#10245A] sm:text-4xl lg:text-5xl">
+              Meet The Team
+            </h2>
+            <span className="mx-auto mt-4 block h-1 w-16 origin-left scale-x-0 rounded-full bg-gradient-to-r from-[#FF8A1E] to-[#F5A000] transition-transform duration-500 ease-out group-hover:scale-x-100" />
+          </motion.div>
           <div>
-            {/* First row: up to 3 cards (left aligned) */}
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {team.slice(0, 3).map((member, i) => (
+            {/* All team members in one row */}
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              {team.map((member, i) => (
                 <div key={member.name} className="w-full">
                   <TeamCard
                     member={member}
@@ -136,78 +283,26 @@ export default function About() {
                 </div>
               ))}
             </div>
-
-            {/* Second row: center any remaining cards (e.g., 2 cards centered) */}
-            {team.length > 3 && (
-              <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:justify-center">
-                {team.slice(3).map((member, i) => (
-                  <div
-                    key={member.name}
-                    className="w-full sm:w-1/2 lg:w-[360px]"
-                  >
-                    <TeamCard
-                      member={member}
-                      image={getTeamImage(member)}
-                      index={3 + i}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </section>
 
-      {/* 3. Vision, Mission, USP */}
-      <section className="section-pad bg-ink-50">
+      {/* 5. Why Choose MICEkart */}
+      <section className="section-pad py-16 bg-white">
         <div className="page-container">
-          <SectionHeading
-            label="Core Principles"
-            title="Our vision and mission"
-            center
-          />
-          <div className="grid gap-8 lg:grid-cols-3 mt-8">
-            {pillars.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-                className="relative group overflow-hidden rounded-3xl border border-ink-100 bg-white hover:border-orange-500/20 hover:shadow-xl transition-all duration-400 p-6"
-              >
-                <div
-                  className={`absolute left-4 top-6 bottom-6 w-1.5 ${v.color} rounded-sm`}
-                />
-                <div className="pl-6">
-                  <h3 className="font-display text-2xl font-bold text-ink-950 leading-tight">
-                    {v.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-600">
-                    {v.text}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group text-center"
+          >
+            <h2 className="font-display text-3xl font-bold text-[#10245A] sm:text-4xl lg:text-5xl">
+              What Sets Us Apart
+            </h2>
+            <span className="mx-auto mt-4 block h-1 w-16 origin-left scale-x-0 rounded-full bg-gradient-to-r from-[#FF8A1E] to-[#F5A000] transition-transform duration-500 ease-out group-hover:scale-x-100" />
+          </motion.div>
 
-      {/* 4. Why Choose MICEkart */}
-      <section className="section-pad bg-white">
-        <div className="page-container">
-          <SectionHeading
-            label="What Sets Us Apart"
-            title="What Sets Us Apart"
-            center
-          />
-          <p className="mx-auto mt-6 max-w-4xl text-center text-lg leading-8 text-ink-600">
-            We provide seamless corporate travel and MICE solutions, combining
-            strategic planning, flawless event execution, and personalized
-            experiences to create impactful business events, conferences,
-            incentives, and corporate journeys that drive engagement and growth.
-          </p>
-          <div className="grid gap-6 sm:grid-cols-2 mt-10">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {whyChooseDetails.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -217,21 +312,25 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="group flex gap-5 rounded-3xl border border-ink-100 bg-ink-50/50 p-6 sm:p-8 hover:bg-white hover:border-orange-500/20 hover:shadow-card-hover transition-all duration-300"
+                  className="group relative flex h-full flex-col items-center overflow-hidden rounded-[28px] border border-slate-100 bg-white px-6 py-8 text-center shadow-[0_14px_34px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--card-accent)] hover:shadow-[0_24px_50px_rgba(15,23,42,0.08)]"
+                  style={{ "--card-accent": item.color }}
                 >
                   <span
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${item.color} transition duration-500 group-hover:scale-110`}
+                    className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{ backgroundColor: hexToRgba(item.color, 0.08) }}
+                  />
+                  <span
+                    className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full border border-white/80 text-white shadow-[0_14px_24px_rgba(15,23,42,0.12)] transition duration-500 group-hover:scale-110"
+                    style={{ backgroundColor: item.color }}
                   >
-                    <Icon size={24} />
+                    <Icon size={34} strokeWidth={1.9} />
                   </span>
-                  <div>
-                    <h3 className="font-display text-xl font-bold text-ink-950 transition duration-300 group-hover:text-orange-500">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-600">
-                      {item.desc}
-                    </p>
-                  </div>
+                  <h3 className="relative z-10 mt-6 font-display text-[1.05rem] font-bold leading-tight text-slate-900 transition duration-300 group-hover:text-[#10245A]">
+                    {item.title}
+                  </h3>
+                  <p className="relative z-10 mt-4 text-sm leading-7 text-slate-500 transition duration-300 group-hover:text-slate-700">
+                    {item.desc}
+                  </p>
                 </motion.div>
               );
             })}
@@ -239,7 +338,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden section-pad">
+      <section className="relative overflow-hidden section-pad py-16">
         <SafeImage
           src={images.gala}
           alt=""

@@ -1,6 +1,7 @@
 // Centralized icon exports (facilitates swapping icon set later)
 export {
   ArrowRight,
+  Eye,
   ChevronLeft,
   ChevronRight,
   BadgeCheck,
@@ -12,6 +13,7 @@ export {
   Sparkles,
   Camera,
   ThumbsUp,
+  Target,
   CheckCircle,
   Clock3,
   Menu,

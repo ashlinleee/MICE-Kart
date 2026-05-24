@@ -21,7 +21,6 @@ export const about = {
   ],
   offerings: [
     "We offer end-to-end solutions for sales incentive trips, meetings and conference arrangements, events and exhibitions, merchandising requirements, team-building activities, artist requirements, and more.",
-    "Our goal is to make corporate travel and event planning easier, smarter, and more efficient for every client.",
   ],
   closing:
     "With a team backed by deep industry experience, MICEkart focuses on delivering value, service excellence, and personalized support. We believe every journey should be well-planned, well-managed, and memorable for the right reasons.",
@@ -41,7 +40,7 @@ export const mission =
   "To empower organizations to achieve their business and cultural goals through thoughtfully designed corporate travel and MICE programs that connect people, deepen relationships, and turn every event into a meaningful driver of performance and growth.";
 
 export const usp =
-  "We provide seamless corporate travel and MICE solutions, combining strategic planning, flawless event execution, and personalized experiences to create impactful business events, conferences, incentives, and corporate journeys that drive engagement and growth.";
+  "Our goal is to make corporate travel and event planning easier, smarter, and more efficient for every client. We provide seamless corporate travel and MICE solutions, combining strategic planning, flawless event execution, and personalized experiences to create impactful business events, conferences, incentives, and corporate journeys that drive engagement and growth.";
 
 const u = (id, w = 1200, h = 800) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
@@ -234,7 +233,7 @@ export const team = [
   {
     name: "Haneen Shaikh",
     role: "Operations Manager",
-    bio: "Oversees operational strategy and execution with strong expertise in process management and travel/event coordination, ensuring seamless delivery and exceptional client experiences.",
+    bio: "Oversees operational strategy and execution with 8+ years of experience and strong expertise in process management and travel/event coordination, ensuring seamless delivery and exceptional client experiences.",
     image: u("photo-1580489944761-15a19d654956", 600, 750),
   },
   {

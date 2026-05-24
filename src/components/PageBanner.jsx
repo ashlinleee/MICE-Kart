@@ -9,6 +9,7 @@ export default function PageBanner({
   subtitle,
   children,
   tall = false,
+  center = false,
 }) {
   return (
     <section
@@ -29,12 +30,22 @@ export default function PageBanner({
       <div className="overlay-hero absolute inset-0" />
       <div className="absolute inset-0 bg-blue-950/20" />
 
-      <div className="page-container relative z-10 w-full pb-12 pt-24 sm:pb-20 sm:pt-32 lg:pt-36">
+      <div
+        className={
+          center
+            ? "page-container relative z-10 w-full flex items-center justify-center text-center min-h-full"
+            : "page-container relative z-10 w-full pb-12 pt-24 sm:pb-20 sm:pt-32 lg:pt-36"
+        }
+      >
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="max-w-[36rem] font-display text-3xl font-bold leading-[1.08] text-white sm:max-w-4xl sm:text-5xl lg:text-6xl"
+          className={
+            center
+              ? "max-w-[80%] font-display text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl"
+              : "max-w-[36rem] font-display text-3xl font-bold leading-[1.08] text-white sm:max-w-4xl sm:text-5xl lg:text-6xl"
+          }
         >
           {title}
         </motion.h1>
