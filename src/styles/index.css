@@ -18,7 +18,10 @@
     @apply bg-white font-sans text-ink-800 antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-display font-bold tracking-tight text-ink-950;
   }
 
@@ -71,7 +74,7 @@
   .btn-orange::after,
   .btn-outline::after,
   .btn-ghost::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -149,7 +152,9 @@
   }
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 

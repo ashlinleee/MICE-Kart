@@ -6,15 +6,7 @@ import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import TeamCard from "../components/ui/TeamCard";
 import SafeImage from "../components/ui/SafeImage";
-import {
-  images,
-  about,
-  whyChooseUs,
-  vision,
-  mission,
-  usp,
-  team,
-} from "../data/siteContent";
+import { images, about, vision, mission, usp, team } from "../data/siteContent";
 import gavinImage from "../../gavin.jpeg";
 import abhishekImage from "../../abhiskek.png";
 
@@ -52,32 +44,35 @@ const pillars = [
 
 const whyChooseDetails = [
   {
-    title: "One-Stop Solutions",
-    desc: "From delegate ticketing and visas to stage production, branding, and catering, we handle all MICE and event needs end-to-end.",
+    title: "Strategic Planning",
+    desc: "Program-first planning that aligns travel and events with business outcomes, budgets, and timelines.",
     icon: Sparkles,
     color: "text-orange-500 bg-orange-500/10 border-orange-500/20",
   },
   {
-    title: "Global Reach",
-    desc: "Seamless domestic execution across major Indian business hubs and international programs custom-made for global impact.",
+    title: "Execution Excellence",
+    desc: "On-ground precision across logistics, venue coordination, vendor management, and delegate experience.",
     icon: Plane,
     color: "text-blue-500 bg-blue-500/10 border-blue-500/20",
   },
   {
-    title: "Bespoke Planning",
-    desc: "Completely customizable programs for sales incentives, employee awards, conferences, and team-building retreats.",
+    title: "Personalized Experiences",
+    desc: "Custom journeys and event formats tailored to audience profile, purpose, and brand tone.",
     icon: ShieldCheck,
     color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
   },
   {
-    title: "Reliability & Quality",
-    desc: "Built on operational excellence, strict travel policy compliance, transparent pricing, and 24/7 on-ground support.",
+    title: "Measurable Impact",
+    desc: "Clear post-event reporting and insights to track engagement, outcomes, and ROI.",
     icon: ThumbsUp,
     color: "text-indigo-500 bg-indigo-500/10 border-indigo-500/20",
   },
 ];
 
 export default function About() {
+  const introLeadClass =
+    "!text-lg !text-ink-900 !font-semibold border-l-4 border-orange-500 pl-4";
+
   return (
     <div>
       <PageBanner
@@ -108,10 +103,8 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent" />
             </motion.div>
             <div className="space-y-6 text-ink-600 leading-relaxed">
-              <p className="text-lg text-ink-900 font-semibold border-l-4 border-orange-500 pl-4">
-                {about.intro[0]}
-              </p>
-              <p>{about.intro[1]}</p>
+              <p className={introLeadClass}>{about.intro[0]}</p>
+              <p className={introLeadClass}>{about.intro[1]}</p>
               {about.offerings.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>
               ))}
@@ -204,10 +197,16 @@ export default function About() {
       <section className="section-pad bg-white">
         <div className="page-container">
           <SectionHeading
-            label="Why Choose Us"
-            title="Why Choose MICEkart"
+            label="What Sets Us Apart"
+            title="What Sets Us Apart"
             center
           />
+          <p className="mx-auto mt-6 max-w-4xl text-center text-lg leading-8 text-ink-600">
+            We provide seamless corporate travel and MICE solutions, combining
+            strategic planning, flawless event execution, and personalized
+            experiences to create impactful business events, conferences,
+            incentives, and corporate journeys that drive engagement and growth.
+          </p>
           <div className="grid gap-6 sm:grid-cols-2 mt-10">
             {whyChooseDetails.map((item, i) => {
               const Icon = item.icon;

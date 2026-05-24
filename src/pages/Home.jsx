@@ -14,7 +14,6 @@ import PageBanner, { BannerCTA } from "../components/PageBanner";
 import heroPic from "/hero-image.png";
 import SectionHeading from "../components/SectionHeading";
 import Marquee from "../components/ui/Marquee";
-import GalleryMarquee from "../components/ui/GalleryMarquee";
 import AnimatedCounter from "../components/ui/AnimatedCounter";
 import TestimonialCarousel from "../components/ui/TestimonialCarousel";
 import SafeImage from "../components/ui/SafeImage";
@@ -28,6 +27,7 @@ import {
   whyChooseUs,
   collageImages,
   testimonials,
+  clientLogos,
 } from "../data/siteContent";
 
 const fadeUp = {
@@ -126,11 +126,14 @@ export default function Home() {
               <SectionHeading
                 label="About MICEkart"
                 title="Integrated Corporate Travel & Events"
-                subtitle={about.intro[0]}
               />
-              <p className="mt-4 text-ink-600 leading-relaxed">
-                {about.intro[1]}
-              </p>
+              <div className="mt-4 space-y-4 text-ink-600">
+                {about.intro.map((paragraph) => (
+                  <p key={paragraph} className="text-lg leading-8">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
               <Link to="/about" className="btn-primary mt-8">
                 About Us <ArrowRight size={18} />
               </Link>
@@ -139,13 +142,69 @@ export default function Home() {
         </section>
 
         <section className="overflow-hidden backdrop-blur-sm">
-          <GalleryMarquee
-            images={collageImages.slice(0, 6)}
-            className="rounded-none border-0 shadow-none"
-          />
+          <div className="page-container mt-14">
+            <SectionHeading
+              label="Clients"
+              title="Clients We’ve Worked With"
+              light
+              center
+            />
+          </div>
+
+          {/* Clients marquee (reused from Clients page) */}
+          <div className="py-6">
+            <div className="space-y-5">
+              {[0, 1].map((rowIndex) => {
+                const row =
+                  rowIndex === 0
+                    ? clientLogos.filter((_, i) => i % 2 === 0)
+                    : clientLogos.filter((_, i) => i % 2 === 1);
+                return (
+                  <div
+                    key={`home-client-row-${rowIndex}`}
+                    className="relative overflow-hidden"
+                  >
+                    <div className="w-full overflow-hidden py-4">
+                      <div
+                        className="flex w-max items-center gap-4 px-6 animate-marquee"
+                        style={{
+                          animationDirection:
+                            rowIndex === 0 ? "reverse" : undefined,
+                          animationDuration: rowIndex === 0 ? "34s" : "42s",
+                        }}
+                      >
+                        {[...row, ...row].map((client, index) => (
+                          <div
+                            key={`${client.name}-${index}`}
+                            className="flex h-[90px] w-[180px] shrink-0 items-center justify-center rounded-3xl border border-orange-500 bg-white px-4 shadow-card sm:h-[110px] sm:w-[220px]"
+                            title={client.name}
+                          >
+                            <img
+                              src={client.src}
+                              alt={client.name}
+                              className="h-full w-full object-contain p-3"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="page-container text-center mt-6">
+            <Link
+              to="/clients"
+              className="btn-primary inline-flex items-center gap-2"
+            >
+              See our clients <ArrowRight size={18} />
+            </Link>
+          </div>
         </section>
 
-        <section className="relative overflow-hidden py-10 sm:py-12 bg-ink-950/70 backdrop-blur-[1px]">
+        <section className="relative overflow-hidden py-10 sm:py-12 mt-10 bg-ink-950/70 backdrop-blur-[1px]">
           <div className="page-container relative z-10">
             <SectionHeading
               label="Why Choose Us"

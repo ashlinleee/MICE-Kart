@@ -16,7 +16,8 @@ export const company = {
 
 export const about = {
   intro: [
-    "MICEkart Pvt. Ltd. is an integrated corporate travel solutions and event management company, helping businesses plan seamless travel experiences, meetings, conferences, exhibitions, incentive programs, and corporate events across India and internationally. We focus on delivering well-coordinated, customized solutions that simplify travel and event planning while ensuring efficiency, quality, and memorable experiences."
+    "MICEkart Pvt. Ltd. is an integrated corporate travel solutions and event management company, helping businesses plan seamless travel experiences, meetings, conferences, exhibitions, incentive programs, and corporate events across India and internationally.",
+    "We focus on delivering well-coordinated, customized solutions that simplify travel and event planning while ensuring efficiency, quality, and memorable experiences."
   ],
   offerings: [
     "We offer end-to-end solutions for sales incentive trips, meetings and conference arrangements, events and exhibitions, merchandising requirements, team-building activities, artist requirements, and more.",
@@ -78,7 +79,7 @@ export const collageImages = [
 export const stats = [
   { value: "2019", label: "Established", suffix: "", animate: true, extraSpins: 0 },
   { value: "20", label: "Enterprise Clients", suffix: "+", animate: true },
-  { value: "100", label: "Successful Events", suffix: "+", animate: true },
+  { value: "1000", label: "Successful Events", suffix: "+", animate: true },
   { value: "9", label: "Core Service Lines", suffix: "", animate: true },
 ];
 
@@ -188,24 +189,25 @@ export const galleryItems = [
 
 export const clientLogos = [
   { name: "Aditya Birla Sun Life Insurance Company Ltd", src: "/client-logos/Aditya Birla Sun Life Insurance Company Ltd.jpeg" },
-  { name: "Atlan Technologies", src: "/client-logos/Atlan Technologies.png" },
+  { name: "Atlan Technologies", src: "/client-logos/atlan_client.png" },
   { name: "Axis Max Life Insurance Limited", src: "/client-logos/Axis Max Life Insurance Limited.png" },
   { name: "Bandhan AMC Limited", src: "/client-logos/Bandhan AMC Limited.jpeg" },
-  { name: "Edelweiss Asset Management Limited", src: "/client-logos/Edelweiss Asset Management Limited.jpeg" },
+  { name: "Edelweiss Asset Management Limited", src: "/client-logos/edelweiss_client.png" },
   { name: "Hdfc Life Insurance Company Limited", src: "/client-logos/Hdfc Life Insurance Company Limited.jpg" },
-  { name: "Hiranandani Financial Services", src: "/client-logos/Hiranandani Financial Services.png" },
+  { name: "Hiranandani Financial Services", src: "/client-logos/hfs_client.png" },
   { name: "ICICI Prudential", src: "/client-logos/ICICI Prudential.png" },
-  { name: "IDFC First Bank", src: "/client-logos/IDFC First bank.png" },
-  { name: "IndusInd Bank Ltd", src: "/client-logos/Indusind Bank Ltd .png" },
-  { name: "Motilal Oswal Asset Management", src: "/client-logos/Motilal Oswal Asset Management.png" },
+  { name: "IDFC First Bank", src: "/client-logos/idfc_client.png" },
+  { name: "IndusInd Bank Ltd", src: "/client-logos/indusind_client.png" },
+  { name: "Franklin Templeton", src: "/client-logos/Franklin Templeton.png" },
+  { name: "Motilal Oswal Asset Management", src: "/client-logos/motilal_client.png" },
   { name: "Muthoot Insurance Brokers Private Limited", src: "/client-logos/Muthoot Insurance Brokers Private Limited.png" },
   { name: "Nippon", src: "/client-logos/Nippon.png" },
-  { name: "Nuvama Wealth and Investment Limited", src: "/client-logos/Nuvama Wealth and Investment Limited.jpg" },
+  { name: "Nuvama Wealth and Investment Limited", src: "/client-logos/Nuvama Wealth and Investment Limited.png" },
   { name: "Prestige Hospitality Ventures Limited", src: "/client-logos/Prestige Hospitality Ventures Limited.png" },
-  { name: "Sanctum Wealth Private Limited, Mumbai", src: "/client-logos/Sanctum Wealth Private Limited,Mumbai.jpg" },
+  { name: "Sanctum Wealth Private Limited, Mumbai", src: "/client-logos/Sanctum Wealth Private Limited,Mumbai.png" },
   { name: "Tata Capital Limited", src: "/client-logos/Tata Capital Limited.png" },
   { name: "Whiteoak Capital Asset Management Limited", src: "/client-logos/Whiteoak Capital Asset Management Limited.png" },
-  { name: "Zurich Kotak General Insurance Co. (India) Ltd", src: "/client-logos/Zurich Kotak General Insurance Co. (India) Ltd.jpg" },
+  { name: "Zurich Kotak General Insurance Co. (India) Ltd", src: "/client-logos/Zurich Kotak General Insurance Co. (India) Ltd.png" },
 ];
 
 export const clients = clientLogos.map((client) => client.name);
@@ -272,5 +274,53 @@ export const testimonials = [
       "The experience was polished, professional, and well paced. MICEkart brought structure to a complex event and delivered exactly what our teams needed.",
     name: "Marketing Head",
     role: "Brand Activation",
+  },
+  {
+    quote:
+      "Their planning discipline and on-ground coordination gave us complete confidence during a high-stakes client summit.",
+    name: "Operations Director",
+    role: "Client Summits",
+  },
+  {
+    quote:
+      "From travel logistics to venue flow, everything was managed smoothly and with a clear eye on the attendee experience.",
+    name: "Business Program Manager",
+    role: "Corporate Travel",
+  },
+  {
+    quote:
+      "MICEkart balanced creativity with structure, which made our incentive program both memorable and easy to manage.",
+    name: "HR Business Partner",
+    role: "Incentive Programs",
+  },
+  {
+    quote:
+      "The team understood our brand tone quickly and translated it into a well-run event with strong attention to detail.",
+    name: "Brand Manager",
+    role: "Launch Events",
+  },
+  {
+    quote:
+      "Every step felt coordinated and proactive. They anticipated needs before they became issues, which made a big difference.",
+    name: "Travel Lead",
+    role: "Enterprise Mobility",
+  },
+  {
+    quote:
+      "We appreciated the clear communication, the professionalism on site, and the quality of execution throughout the program.",
+    name: "Event Lead",
+    role: "Conferences",
+  },
+  {
+    quote:
+      "MICEkart delivered a seamless experience for our stakeholders and created an event flow that kept everything on track.",
+    name: "Corporate Affairs Head",
+    role: "Stakeholder Events",
+  },
+  {
+    quote:
+      "Their team was responsive, adaptable, and highly organized, which gave us a smooth experience from brief to wrap-up.",
+    name: "Program Director",
+    role: "Business Events",
   },
 ];
