@@ -1,132 +1,122 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "../components/Icons";
 import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import SafeImage from "../components/ui/SafeImage";
+import { ChevronRight } from "../components/Icons";
 import { images, services } from "../data/siteContent";
 
-const loopedServices = [...services, ...services, ...services];
+const faqs = [
+  {
+    question: "What types of services do you offer?",
+    answer:
+      "We cover corporate travel, meetings, conferences, incentive travel, team-building, artist management, merchandising, hybrid solutions, and complete event packages.",
+  },
+  {
+    question: "Can you handle both domestic and international programs?",
+    answer:
+      "Yes. We manage travel and event execution across India and for international corporate programs as well.",
+  },
+  {
+    question: "Do you offer customized packages?",
+    answer:
+      "Every program is tailored to your budget, goals, audience profile, and execution requirements.",
+  },
+  {
+    question: "Can you support end-to-end execution?",
+    answer:
+      "Yes. We manage planning, logistics, vendors, on-ground coordination, and reporting so you have a single point of contact.",
+  },
+  {
+    question: "Do you handle hybrid or tech-enabled events?",
+    answer:
+      "We provide virtual and hybrid event support, including streaming, event apps, and measurement tools.",
+  },
+  {
+    question: "How do I request a proposal?",
+    answer:
+      "Use the contact form or request a quote from the services page with your program details and preferred dates.",
+  },
+];
 
 export default function Services() {
-  const scrollRef = useRef(null);
-  const isAdjustingRef = useRef(false);
-
-  const adjustLoop = () => {
-    const container = scrollRef.current;
-    if (!container || isAdjustingRef.current) return;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    if (maxScroll <= 0) return;
-
-    const edge = 40;
-    if (
-      container.scrollLeft <= edge ||
-      container.scrollLeft >= maxScroll - edge
-    ) {
-      isAdjustingRef.current = true;
-      container.scrollLeft = maxScroll / 2;
-      requestAnimationFrame(() => {
-        isAdjustingRef.current = false;
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (!scrollRef.current) return;
-    const container = scrollRef.current;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    if (maxScroll > 0) {
-      container.scrollLeft = maxScroll / 2;
-    }
-  }, []);
-
-  const handleScroll = (direction) => {
-    if (!scrollRef.current) return;
-    const delta = direction === "left" ? -360 : 360;
-    scrollRef.current.scrollBy({ left: delta, behavior: "smooth" });
-    window.setTimeout(adjustLoop, 350);
-  };
-
   return (
     <div>
       <PageBanner
         image={images.heroProducts}
         title="Services"
-        subtitle="Turnkey services and packages tailored for corporate travel and MICE programs."
+        subtitle="End-to-end MICE, corporate travel and event solutions to make every business trip and gathering seamless and impactful."
       />
 
-      <section className="relative overflow-hidden bg-ink-50 py-16 sm:py-20 lg:py-24">
+      <section className="section-pad bg-ink-50">
         <div className="page-container">
-          <div className="max-w-3xl">
-            <SectionHeading
-              label="What We Do"
-              title="Services"
-              subtitle="Turnkey services and packages tailored for corporate travel and MICE programs."
-            />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s, i) => (
+              <motion.article
+                key={s.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.35,
+                  delay: i * 0.04,
+                  ease: "easeOut",
+                }}
+                className="group h-full overflow-hidden rounded-3xl border border-ink-200/80 bg-white shadow-card transition-shadow duration-500 hover:shadow-card-hover"
+              >
+                <div className="relative min-h-[240px] overflow-hidden">
+                  <SafeImage
+                    src={s.image}
+                    alt={s.title}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent" />
+                  <span className="absolute left-4 top-4 rounded-full bg-orange-500 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+                    Service
+                  </span>
+                </div>
+                <div className="p-6 sm:p-7">
+                  <h3 className="font-display text-xl font-bold text-ink-950">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-ink-600">
+                    {s.desc}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="relative mt-10 overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-14 bg-gradient-to-r from-ink-50 via-ink-50/90 to-transparent sm:w-24" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-14 bg-gradient-to-l from-ink-50 via-ink-50/90 to-transparent sm:w-24" />
-          <button
-            type="button"
-            onClick={() => handleScroll("left")}
-            className="absolute left-2 top-1/2 z-30 -translate-y-1/2 rounded-full border border-ink-200 bg-white/90 p-2 text-ink-700 shadow-card transition hover:bg-white sm:left-4"
-            aria-label="Scroll services left"
-          >
-            <ChevronLeft size={24} strokeWidth={1.5} />
-          </button>
-          <button
-            type="button"
-            onClick={() => handleScroll("right")}
-            className="absolute right-2 top-1/2 z-30 -translate-y-1/2 rounded-full border border-ink-200 bg-white/90 p-2 text-ink-700 shadow-card transition hover:bg-white sm:right-4"
-            aria-label="Scroll services right"
-          >
-            <ChevronRight size={24} strokeWidth={1.5} />
-          </button>
-
-          <div
-            ref={scrollRef}
-            onScroll={adjustLoop}
-            className="flex items-stretch gap-6 overflow-x-auto px-4 pb-4 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            <div className="flex w-max items-stretch gap-6">
-              {loopedServices.map((s, i) => (
-                <motion.article
-                  key={`${s.title}-${i}`}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  whileHover={{ rotateX: 8, rotateY: -8, y: -10, scale: 1.02 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="perspective-1000 h-full w-[84vw] max-w-[340px] shrink-0 sm:max-w-none sm:w-[420px] lg:w-[460px]"
-                >
-                  <div className="group h-full overflow-hidden rounded-3xl border border-ink-200/80 bg-white shadow-card transition-shadow duration-500 hover:shadow-card-hover [transform-style:preserve-3d]">
-                    <div className="relative min-h-[240px] overflow-hidden">
-                      <SafeImage
-                        src={s.image}
-                        alt={s.title}
-                        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent" />
-                      <span className="absolute left-4 top-4 rounded-full bg-orange-500 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                        Service
-                      </span>
-                    </div>
-                    <div className="p-6 sm:p-7">
-                      <h3 className="font-display text-xl font-bold text-ink-950">
-                        {s.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-ink-600">
-                        {s.desc}
-                      </p>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+      <section className="section-pad bg-white">
+        <div className="page-container">
+          <SectionHeading
+            label="FAQ"
+            title="Frequently Asked Questions"
+            subtitle="Quick answers to common questions about our services and process."
+            center
+          />
+          <div className="mt-10 grid max-w-4xl gap-4">
+            {faqs.map((faq) => (
+              <details
+                key={faq.question}
+                className="group rounded-2xl border border-ink-200 bg-ink-50 p-5 shadow-card transition hover:border-orange-500/30 hover:bg-white"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-display text-lg font-bold text-ink-950">
+                  <span>{faq.question}</span>
+                  <ChevronRight
+                    size={20}
+                    strokeWidth={2}
+                    className="shrink-0 rotate-90 text-orange-500"
+                  />
+                </summary>
+                <p className="mt-4 text-sm leading-7 text-ink-600">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
