@@ -11,13 +11,14 @@ import {
   Eye,
   Target,
 } from "../components/Icons";
-import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
+import AnimatedCounter from "../components/ui/AnimatedCounter";
 import TeamCard from "../components/ui/TeamCard";
 import SafeImage from "../components/ui/SafeImage";
 import { images, about, vision, mission, usp, team } from "../data/siteContent";
 import gavinImage from "../../gavin.jpeg";
 import abhishekImage from "../../abhiskek.png";
+import aboutBannerBg from "../../aboutbanner_bg.png";
 
 const localPhotos = {
   gavin: gavinImage,
@@ -86,16 +87,107 @@ const whyChooseDetails = [
   },
 ];
 
+const impactStats = [
+  {
+    value: 600,
+    suffix: "+",
+    label: "Domestic events",
+  },
+  {
+    value: 400,
+    suffix: "+",
+    label: "Abroad international events",
+  },
+  {
+    value: 99,
+    suffix: "%",
+    label: "Client retention",
+  },
+  {
+    value: 5,
+    suffix: "+",
+    label: "Years of industry experience",
+  },
+];
+
+function AboutHeroBanner() {
+  return (
+    <section className="relative overflow-hidden bg-[#071c4a] text-white">
+      <div className="absolute inset-0">
+        <SafeImage
+          src={aboutBannerBg}
+          alt=""
+          className="h-full w-full object-cover opacity-100 blur-[1px] scale-105"
+        />
+      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,37,84,0.88)_0%,rgba(10,10,10,0.75)_100%)]" />
+
+      <div className="page-container relative z-10 flex min-h-[82vh] items-center pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36">
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl"
+        >
+          <div className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-orange-400">
+            ABOUT MICEKART
+          </div>
+          <h1 className="max-w-[20ch] font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+            <span className="block text-white">We Plan. We Manage.</span>
+            <span className="block text-orange-500">We Deliver Impact.</span>
+          </h1>
+          <p className="mt-6 max-w-[36rem] text-base leading-7 text-blue-100">
+            <span className="block">
+              MICEkart simplifies corporate travel and event management
+            </span>
+            <span className="block">
+              through strategic planning, precision execution, and
+            </span>
+            <span className="block">personalized experiences.</span>
+          </p>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Link to="/services" className="btn-orange">
+              Explore Our Services
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 export default function About() {
   const introTextClass = "text-lg leading-8 text-ink-600";
 
   return (
     <div>
-      <PageBanner
-        image={images.heroAbout}
-        title="About Us"
-        subtitle="MICEkart Pvt. Ltd. a trusted corporate travel and event partner since 2019."
-      />
+      <AboutHeroBanner />
+
+      <section className="relative z-20 -mt-16 px-4 sm:-mt-20">
+        <div className="page-container">
+          <div className="relative mx-auto w-full max-w-7xl overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,27,72,0.98)_0%,rgba(11,45,104,0.96)_100%)] px-5 py-4 shadow-[0_24px_80px_rgba(7,20,49,0.3)] backdrop-blur-xl sm:px-8 sm:py-5">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,122,26,0.16),transparent_18%),radial-gradient(circle_at_88%_18%,rgba(255,122,26,0.12),transparent_16%)]" />
+            <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5">
+              {impactStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-3xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.11)_0%,rgba(255,255,255,0.06)_38%,rgba(7,27,72,0.18)_100%)] px-4 py-4 text-center shadow-[0_10px_24px_rgba(7,20,49,0.14)] sm:px-5 sm:py-5"
+                >
+                  <AnimatedCounter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    className="text-orange-400"
+                  />
+                  <p className="mt-2 text-sm font-semibold leading-6 text-white/85">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 1. Who we are */}
       <section className="section-pad py-[120px] bg-white">

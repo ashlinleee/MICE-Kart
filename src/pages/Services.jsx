@@ -1,60 +1,215 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import PageBanner from "../components/PageBanner";
-import SectionHeading from "../components/SectionHeading";
 import SafeImage from "../components/ui/SafeImage";
-import { ChevronRight } from "../components/Icons";
-import { images, services } from "../data/siteContent";
+import servicesBanner from "../../services_banner.png";
+import { BadgeCheck, Mail, Phone, Quote, Users } from "../components/Icons";
+import { company, services } from "../data/siteContent";
 
-const faqs = [
+const formFields = [
   {
-    question: "What types of services do you offer?",
-    answer:
-      "We cover corporate travel, meetings, conferences, incentive travel, team-building, artist management, merchandising, hybrid solutions, and complete event packages.",
+    name: "name",
+    type: "text",
+    placeholder: "Name",
+    Icon: Users,
   },
   {
-    question: "Can you handle both domestic and international programs?",
-    answer:
-      "Yes. We manage travel and event execution across India and for international corporate programs as well.",
+    name: "phone",
+    type: "tel",
+    placeholder: "Phone",
+    Icon: Phone,
   },
   {
-    question: "Do you offer customized packages?",
-    answer:
-      "Every program is tailored to your budget, goals, audience profile, and execution requirements.",
+    name: "email",
+    type: "email",
+    placeholder: "Email Address",
+    Icon: Mail,
   },
   {
-    question: "Can you support end-to-end execution?",
-    answer:
-      "Yes. We manage planning, logistics, vendors, on-ground coordination, and reporting so you have a single point of contact.",
-  },
-  {
-    question: "Do you handle hybrid or tech-enabled events?",
-    answer:
-      "We provide virtual and hybrid event support, including streaming, event apps, and measurement tools.",
-  },
-  {
-    question: "How do I request a proposal?",
-    answer:
-      "Use the contact form or request a quote from the services page with your program details and preferred dates.",
+    name: "subject",
+    type: "text",
+    placeholder: "Subject",
+    Icon: BadgeCheck,
   },
 ];
 
+function ServiceFormModal({ serviceTitle, onClose }) {
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
+      <button
+        type="button"
+        aria-label="Close service enquiry form"
+        className="absolute inset-0 bg-[#06142f]/25 backdrop-blur-[2px]"
+        onClick={onClose}
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 16, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 16, scale: 0.98 }}
+        transition={{ duration: 0.25 }}
+        className="relative z-10 w-full max-w-xl overflow-hidden rounded-[28px] border border-white/15 bg-[linear-gradient(180deg,rgba(7,28,74,0.62)_0%,rgba(10,45,104,0.5)_52%,rgba(7,20,49,0.62)_100%)] shadow-[0_30px_90px_rgba(7,28,74,0.28)] backdrop-blur-2xl"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,138,30,0.2),transparent_38%),radial-gradient(circle_at_top_right,rgba(56,189,248,0.16),transparent_34%),linear-gradient(180deg,rgba(59,130,246,0.05)_0%,rgba(7,28,74,0.01)_100%)]" />
+        <div className="relative flex items-start justify-between gap-6 border-b border-white/10 px-6 py-5 sm:px-8">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-orange-300">
+              Service Enquiry
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
+              {serviceTitle || "Tell us about your project"}
+            </h2>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-full border border-white/10 bg-blue-950/35 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-900/50"
+          >
+            Close
+          </button>
+        </div>
+
+        <div className="relative px-6 py-6 sm:px-8 sm:py-8">
+          <form
+            action={`https://formsubmit.co/${company.email}`}
+            method="POST"
+            className="space-y-5"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value={
+                serviceTitle
+                  ? `Enquiry for ${serviceTitle}`
+                  : "Enquiry from MICEkart website"
+              }
+            />
+            <input type="hidden" name="_captcha" value="false" />
+
+            {formFields.map((field, index) => (
+              <motion.label
+                key={field.name}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 + index * 0.04 }}
+                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-blue-950/30 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+              >
+                <span className="text-orange-300/95">
+                  <field.Icon size={18} />
+                </span>
+                <input
+                  name={field.name}
+                  type={field.type}
+                  required
+                  placeholder={field.placeholder}
+                  className="w-full border-none bg-transparent text-sm text-white outline-none placeholder:text-white/55"
+                />
+              </motion.label>
+            ))}
+
+            <motion.label
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.28 }}
+              className="flex items-start gap-3 rounded-2xl border border-white/10 bg-blue-950/30 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+            >
+              <span className="pt-1 text-orange-300/95">
+                <Quote size={18} />
+              </span>
+              <textarea
+                name="message"
+                rows={4}
+                required
+                placeholder="How can we help you? Feel free to get in touch!"
+                className="w-full resize-none border-none bg-transparent text-sm text-white outline-none placeholder:text-white/55"
+              />
+            </motion.label>
+
+            <motion.button
+              type="submit"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.34 }}
+              whileHover={{ y: -2, scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-orange w-full rounded-full"
+            >
+              Submit Query
+            </motion.button>
+          </form>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Services() {
+  const [activeService, setActiveService] = useState(null);
+
   return (
     <div>
-      <PageBanner
-        image={images.heroProducts}
-        title="Services"
-        subtitle="End-to-end MICE, corporate travel and event solutions to make every business trip and gathering seamless and impactful."
-      />
+      <section className="relative overflow-hidden bg-[#071c4a] text-white">
+        <div className="absolute inset-0">
+          <SafeImage
+            src={servicesBanner}
+            alt=""
+            className="h-full w-full object-cover opacity-100 blur-[1px] scale-105"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,37,84,0.88)_0%,rgba(10,10,10,0.75)_100%)]" />
 
-      <section className="section-pad bg-ink-50">
+        <div className="page-container relative z-10 flex min-h-[82vh] items-end pb-8 pt-28 sm:pb-12 sm:pt-32 lg:pb-12 lg:pt-36">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <div className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-orange-400">
+              OUR SERVICES
+            </div>
+            <h1 className="max-w-[40ch] font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              <span className="block text-white">
+                Designed for Every Corporate Experience
+              </span>
+              <span className="block text-orange-500">
+                From Planning to Perfect Execution
+              </span>
+            </h1>
+            <p className="mt-6 max-w-[36rem] text-base leading-7 text-blue-100">
+              From business travel and conferences to incentive journeys and
+              large-scale events, we create seamless experiences that drive
+              engagement and results.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link to="/contact" className="btn-orange">
+                Get in touch
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="services-list" className="section-pad bg-ink-50">
         <div className="page-container">
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <motion.article
+              <motion.button
                 key={s.title}
+                type="button"
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -63,7 +218,8 @@ export default function Services() {
                   delay: i * 0.04,
                   ease: "easeOut",
                 }}
-                className="group h-full overflow-hidden rounded-3xl border border-ink-200/80 bg-white shadow-card transition-shadow duration-500 hover:shadow-card-hover"
+                onClick={() => setActiveService(s.title)}
+                className="group h-full overflow-hidden rounded-3xl border border-ink-200/80 bg-white text-left shadow-card transition-shadow duration-500 hover:shadow-card-hover"
               >
                 <div className="relative min-h-[240px] overflow-hidden">
                   <SafeImage
@@ -84,62 +240,18 @@ export default function Services() {
                     {s.desc}
                   </p>
                 </div>
-              </motion.article>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-pad bg-white">
-        <div className="page-container">
-          <SectionHeading
-            label="FAQ"
-            title="Frequently Asked Questions"
-            subtitle="Quick answers to common questions about our services and process."
-            center
-          />
-          <div className="mt-10 grid max-w-4xl gap-4">
-            {faqs.map((faq) => (
-              <details
-                key={faq.question}
-                className="group rounded-2xl border border-ink-200 bg-ink-50 p-5 shadow-card transition hover:border-orange-500/30 hover:bg-white"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-display text-lg font-bold text-ink-950">
-                  <span>{faq.question}</span>
-                  <ChevronRight
-                    size={20}
-                    strokeWidth={2}
-                    className="shrink-0 rotate-90 text-orange-500"
-                  />
-                </summary>
-                <p className="mt-4 text-sm leading-7 text-ink-600">
-                  {faq.answer}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative min-h-[420px] overflow-hidden py-24">
-        <SafeImage
-          src={images.heroContact}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+      {activeService ? (
+        <ServiceFormModal
+          serviceTitle={activeService}
+          onClose={() => setActiveService(null)}
         />
-        <div className="overlay-hero absolute inset-0" />
-        <div className="page-container relative z-10 text-center">
-          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            Need a custom package?
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-blue-100">
-            We'll tailor scope, travel, venue and production to your goals.
-          </p>
-          <Link to="/contact" className="btn-orange mt-8 inline-flex">
-            Request Quote
-          </Link>
-        </div>
-      </section>
+      ) : null}
     </div>
   );
 }

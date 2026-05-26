@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -12,8 +13,8 @@ import {
   BadgeCheck,
   Quote,
 } from "../components/Icons";
-import PageBanner from "../components/PageBanner";
 import GlowCard from "../components/ui/GlowCard";
+import contactBanner from "../../contact_banner.png";
 import { images, company } from "../data/siteContent";
 
 const fadeUp = {
@@ -28,13 +29,48 @@ const fadeUp = {
 export default function Contact() {
   return (
     <div>
-      <PageBanner
-        image={images.heroContact}
-        title="Contact Us"
-        subtitle="Plan your next corporate travel program or event with our Mumbai team."
-      />
+      <section className="relative overflow-hidden bg-[#071c4a] text-white">
+        <div className="absolute inset-0">
+          <img
+            src={contactBanner}
+            alt=""
+            className="h-full w-full object-cover opacity-100 blur-[1px] scale-105"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,37,84,0.88)_0%,rgba(10,10,10,0.75)_100%)]" />
 
-      <section className="relative section-pad bg-[#e8effa]">
+        <div className="page-container relative z-10 flex min-h-[82vh] items-end pb-8 pt-28 sm:pb-12 sm:pt-32 lg:pb-12 lg:pt-36">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <div className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-orange-400">
+              CONTACT US
+            </div>
+            <h1 className="max-w-[40ch] font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              <span className="block text-white">
+                Your Next Experience Starts Here
+              </span>
+              <span className="block text-orange-500">
+                Let’s Build Something Exceptional
+              </span>
+            </h1>
+            <p className="mt-6 max-w-[36rem] text-base leading-7 text-blue-100">
+              Connect with us and discover seamless solutions for travel,
+              events, and business experiences.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link to="/services" className="btn-orange">
+                Explore Services
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="contact-form" className="relative section-pad bg-[#e8effa]">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(30,58,138,0.14),transparent_70%)]" />
         <div className="page-container grid items-start gap-10 sm:gap-12 md:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div className="space-y-6 text-center md:text-left">
@@ -115,27 +151,17 @@ export default function Contact() {
               custom={5}
               whileInView="visible"
               viewport={{ once: true }}
-              className="mx-auto flex w-full max-w-md items-center justify-start gap-4 text-left md:mx-0"
+              className="mx-auto flex w-full max-w-md items-start justify-start gap-4 text-left md:mx-0"
             >
-              <span className="hidden h-11 w-11 items-center justify-center rounded-full bg-blue-900 text-white shadow-md sm:flex sm:h-16 sm:w-16">
+              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-blue-900 text-white shadow-md sm:h-12 sm:w-12">
                 <MapPin size={20} />
               </span>
               <div className="text-left">
-                <p className="text-base font-semibold tracking-wide text-ink-900">
-                  Office Address
-                </p>
-                <p className="mt-2 text-xs leading-relaxed text-ink-600 md:hidden">
+                <p className="text-base font-semibold tracking-wide text-ink-900 sm:text-sm">
                   Neelkanth Business Park, A-704, Vidyavihar station skywalk,
                   Sadguru Nagar, Neelkanth Kingdom, Vidyavihar West, Vidyavihar,
                   Mumbai, Maharashtra 400086
                 </p>
-              </div>
-              <div className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 hidden w-[min(20rem,90vw)] -translate-x-1/2 opacity-0 transition duration-200 ease-out group-hover:translate-y-1 group-hover:opacity-100 group-focus-within:translate-y-1 group-focus-within:opacity-100 md:block md:left-16 md:translate-x-0">
-                <div className="rounded-2xl border border-white/60 bg-white/90 px-4 py-3 text-xs leading-relaxed text-ink-700 shadow-lg shadow-ink-900/10 backdrop-blur">
-                  Neelkanth Business Park, A-704, Vidyavihar station skywalk,
-                  Sadguru Nagar, Neelkanth Kingdom, Vidyavihar West, Vidyavihar,
-                  Mumbai, Maharashtra 400086
-                </div>
               </div>
             </motion.div>
           </div>

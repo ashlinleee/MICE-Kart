@@ -1,12 +1,11 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
 import SafeImage from "../components/ui/SafeImage";
 import { Quote } from "../components/Icons";
 import { ChevronLeft, ChevronRight } from "../components/Icons";
-import { ArrowRight } from "../components/Icons";
+import clientBanner from "../../client_banner.png";
 import { images, clientLogos, testimonials } from "../data/siteContent";
 
 const fadeUp = {
@@ -44,11 +43,48 @@ export default function Clients() {
       </div>
 
       <div className="relative z-10">
-        <PageBanner
-          image={images.heroClients}
-          title="Our Clients"
-          subtitle="Trusted by leading enterprises across financial services and corporate India."
-        />
+        <section className="relative overflow-hidden bg-[#071c4a] text-white">
+          <div className="absolute inset-0">
+            <SafeImage
+              src={clientBanner}
+              alt=""
+              className="h-full w-full object-cover opacity-100 blur-[1px] scale-105"
+            />
+          </div>
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,37,84,0.88)_0%,rgba(10,10,10,0.75)_100%)]" />
+
+          <div className="page-container relative z-10 flex min-h-[82vh] items-end pb-8 pt-28 sm:pb-12 sm:pt-32 lg:pb-12 lg:pt-36">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-2xl"
+            >
+              <div className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-orange-400">
+                OUR CLIENTS
+              </div>
+              <h1 className="max-w-[40ch] font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+                <span className="block text-white">
+                  Driving Success Together
+                </span>
+                <span className="block text-orange-500">
+                  Across Industries &amp; Experiences
+                </span>
+              </h1>
+              <p className="mt-6 max-w-[36rem] text-base leading-7 text-blue-100">
+                Trusted by businesses across multiple sectors, MICEkart creates
+                seamless experiences through strategic planning, personalized
+                solutions, and flawless execution that help organizations
+                achieve their goals.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link to="/contact" className="btn-orange">
+                  Partner With Us
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         <section className="section-pad bg-white">
           <div className="page-container">
@@ -124,34 +160,6 @@ export default function Clients() {
                 </article>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="relative overflow-hidden section-pad">
-          <SafeImage
-            src={images.conference}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="overlay-hero absolute inset-0" />
-          <motion.div
-            animate={{ y: [0, -10, 0], x: [0, 10, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="pointer-events-none absolute left-8 top-10 h-24 w-24 rounded-full bg-white/10 blur-2xl"
-          />
-          <div className="page-container relative z-10 text-center">
-            <h2 className="font-display text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-              Partner with MICEkart
-            </h2>
-            <p className="mx-auto mt-3 max-w-lg text-blue-100">
-              Corporate travel and events - Engineered for impact.
-            </p>
-            <Link
-              to="/contact"
-              className="btn-orange mt-8 inline-flex shadow-lg shadow-orange-500/20 transition duration-300 hover:-translate-y-1 hover:shadow-orange-500/30"
-            >
-              Get in Touch <ArrowRight size={16} />
-            </Link>
           </div>
         </section>
       </div>

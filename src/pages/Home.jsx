@@ -10,7 +10,6 @@ import {
   Users,
   ShieldCheck,
 } from "../components/Icons";
-import PageBanner, { BannerCTA } from "../components/PageBanner";
 import heroPic from "/hero-image.png";
 import SectionHeading from "../components/SectionHeading";
 import Marquee from "../components/ui/Marquee";
@@ -96,15 +95,53 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-        <PageBanner
-          image={heroPic}
-          title={company.slogan}
-          subtitle="Integrated corporate travel solutions and events across India and internationally."
-          tall
-        >
-          <BannerCTA to="/contact" label="Plan Your Event" />
-          <BannerCTA to="/services" label="Our Services" variant="outline" />
-        </PageBanner>
+        <section className="relative overflow-hidden bg-[#071c4a] text-white">
+          <div className="absolute inset-0">
+            <SafeImage
+              src={heroPic}
+              alt=""
+              className="h-full w-full object-cover opacity-100 blur-[1px] scale-105"
+            />
+          </div>
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,37,84,0.88)_0%,rgba(10,10,10,0.75)_100%)]" />
+
+          <div className="page-container relative z-10 flex min-h-[82vh] items-end pb-8 pt-28 sm:pb-12 sm:pt-32 lg:pb-12 lg:pt-36">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-2xl"
+            >
+              <div className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-orange-400">
+                STRATEGY MEETS EXECUTION
+              </div>
+              <h1 className="max-w-[40ch] font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+                <span className="block text-white">
+                  Corporate Travel &amp; Events
+                </span>
+                <span className="block text-orange-500">
+                  Engineered for Impact
+                </span>
+              </h1>
+              <p className="mt-6 max-w-[36rem] text-base leading-7 text-blue-100">
+                Delivering integrated corporate travel, meetings, conferences,
+                and experiential solutions across India and around the world
+                with precision and excellence.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link to="/contact" className="btn-orange">
+                  Plan Your Event
+                </Link>
+                <Link
+                  to="/services"
+                  className="btn-outline !border-blue-300/40 !bg-blue-500/10 !text-white hover:!-translate-y-0.5 hover:!border-blue-300 hover:!bg-blue-500/20"
+                >
+                  Our Services
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         <Marquee />
 
@@ -123,15 +160,12 @@ export default function Home() {
               />
             </motion.div>
             <div>
-              <SectionHeading
-                label="About MICEkart"
-                title="Integrated Corporate Travel & Events"
-              />
-              <div className="mt-4 space-y-4 text-ink-600">
+              <h2 className="font-display text-3xl font-bold leading-tight text-black-700 lg:text-4xl">
+                Integrated Corporate Travel &amp; Events
+              </h2>
+              <div className="mt-4 space-y-4 text-base leading-7 text-ink-600">
                 {about.intro.map((paragraph) => (
-                  <p key={paragraph} className="text-lg leading-8">
-                    {paragraph}
-                  </p>
+                  <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
               <Link to="/about" className="btn-primary mt-8">
@@ -277,9 +311,6 @@ export default function Home() {
             />
           </div>
           <div className="relative mt-8">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 bg-gradient-to-r from-white via-white/90 to-transparent sm:w-24" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-14 bg-gradient-to-l from-white via-white/90 to-transparent sm:w-24" />
-
             <button
               type="button"
               onClick={() => handleServicesScroll("left")}
