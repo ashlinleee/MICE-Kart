@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SafeImage from "../components/ui/SafeImage";
 import servicesBanner from "../../services_banner.png";
-import { BadgeCheck, Mail, Phone, Quote, Users } from "../components/Icons";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Mail,
+  Phone,
+  Quote,
+  Users,
+} from "../components/Icons";
 import { company, services } from "../data/siteContent";
 
 const formFields = [
@@ -32,6 +39,32 @@ const formFields = [
     Icon: BadgeCheck,
   },
 ];
+
+const fallbackHighlights = [
+  "Strategy & planning",
+  "On-ground execution",
+  "Operational control",
+  "Experience management",
+];
+
+function getServiceHighlights(desc) {
+  const parts = desc
+    .replace(/\.$/, "")
+    .split(/,|\s+and\s+|\s*&\s*|\s*\/\s*/gi)
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  const unique = Array.from(new Set(parts));
+  if (unique.length >= 4) return unique.slice(0, 4);
+
+  const merged = [...unique];
+  for (const item of fallbackHighlights) {
+    if (merged.length === 4) break;
+    if (!merged.includes(item)) merged.push(item);
+  }
+
+  return merged.slice(0, 4);
+}
 
 function ServiceFormModal({ serviceTitle, onClose }) {
   useEffect(() => {
@@ -160,7 +193,7 @@ export default function Services() {
   const [activeService, setActiveService] = useState(null);
 
   return (
-    <div>
+    <div className="bg-[linear-gradient(180deg,#06142f_0%,#0b2d66_42%,#071a3a_100%)]">
       <section className="relative overflow-hidden bg-[#071c4a] text-white">
         <div className="absolute inset-0">
           <SafeImage
@@ -203,9 +236,9 @@ export default function Services() {
         </div>
       </section>
 
-      <section id="services-list" className="section-pad bg-ink-50">
+      <section id="services-list" className="section-pad bg-transparent">
         <div className="page-container">
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <motion.button
                 key={s.title}
@@ -219,25 +252,24 @@ export default function Services() {
                   ease: "easeOut",
                 }}
                 onClick={() => setActiveService(s.title)}
-                className="group h-full overflow-hidden rounded-3xl border border-ink-200/80 bg-white text-left shadow-card transition-shadow duration-500 hover:shadow-card-hover"
+                className="group relative h-full overflow-hidden rounded-[30px] border border-blue-300/20 bg-gradient-to-br from-blue-950 via-blue-900 to-ink-950 text-left text-white shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-orange-300/70 hover:shadow-[0_20px_48px_rgba(249,115,22,0.22)]"
               >
-                <div className="relative min-h-[240px] overflow-hidden">
+                <div className="relative h-[280px] overflow-hidden border-b border-blue-200/15">
                   <SafeImage
                     src={s.image}
                     alt={s.title}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                    className="absolute inset-0 h-full w-full object-cover transition duration-1000 ease-out group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full bg-orange-500 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                    Service
-                  </span>
                 </div>
-                <div className="p-6 sm:p-7">
-                  <h3 className="font-display text-xl font-bold text-ink-950">
+                <div className="relative flex h-full flex-col p-6 sm:p-7">
+                  <h3 className="font-display text-2xl font-bold leading-tight text-white transition-colors group-hover:text-orange-200 sm:text-[2rem]">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-ink-600">
+                  <p className="mt-4 text-base leading-8 text-blue-100/85">
                     {s.desc}
+                    <span className="ml-1 text-blue-50/95">
+                      {getServiceHighlights(s.desc).join(". ")}
+                    </span>
                   </p>
                 </div>
               </motion.button>

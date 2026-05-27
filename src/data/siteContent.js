@@ -1,3 +1,16 @@
+import corporateTravelImage from "../../services_images/Corporate Travel Management.png";
+import meetingsConferencesImage from "../../services_images/Meetings, Conferences & Product Launches.png";
+import incentiveTravelImage from "../../services_images/Incentive Travel : Reward & Recognition.png";
+import teamBuildingImage from "../../services_images/Team-building & Experiential Programs.png";
+import artistManagementImage from "../../services_images/Artist Management & Entertainment.png";
+import merchandisingImage from "../../services_images/Merchandising & Fulfilment.png";
+import hybridTechImage from "../../services_images/Hybrid & Tech Solutions.png";
+import riskOperationsImage from "../../services_images/Risk & Operations.png";
+import turnkeyEventImage from "../../services_images/Turnkey Event Packages.png";
+import customIncentiveImage from "../../services_images/Custom Incentive Journeys.png";
+import transportLogisticsImage from "../../services_images/Transport & Logistics Blocks.png";
+import reportingDashboardImage from "../../services_images/Reporting Dashboard.png";
+
 export const company = {
   name: "MICEkart Pvt. Ltd.",
   slogan: "Corporate travel and events  Engineered for Impact.",
@@ -45,6 +58,21 @@ export const usp =
 const u = (id, w = 1200, h = 800) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
+const serviceImages = {
+  corporateTravel: corporateTravelImage,
+  meetingsConferences: meetingsConferencesImage,
+  incentiveTravel: incentiveTravelImage,
+  teamBuilding: teamBuildingImage,
+  artistManagement: artistManagementImage,
+  merchandising: merchandisingImage,
+  hybridTech: hybridTechImage,
+  riskOperations: riskOperationsImage,
+  turnkeyEvent: turnkeyEventImage,
+  customIncentive: customIncentiveImage,
+  transportLogistics: transportLogisticsImage,
+  reportingDashboard: reportingDashboardImage,
+};
+
 export const images = {
   hero: u("photo-1540575467063-178a50c2df87", 1920, 1080),
   heroAbout: u("photo-1511578314322-379afb476865", 1920, 900),
@@ -86,62 +114,62 @@ export const services = [
   {
     title: "Corporate Travel Management",
     desc: "Flight, rail, transfers, visas, travel-policy compliance, and support for domestic and international programs.",
-    image: images.travel,
+    image: serviceImages.corporateTravel,
   },
   {
     title: "Meetings, Conferences & Product Launches",
     desc: "Venue sourcing, AV production, speaker and delegate management, conceptualising events, and on-site coordination.",
-    image: images.conference,
+    image: serviceImages.meetingsConferences,
   },
   {
     title: "Incentive Travel / Reward & Recognition",
     desc: "Bespoke domestic and international incentive trips, curated itineraries, experiential activities, and R&R fulfilment.",
-    image: images.incentive,
+    image: serviceImages.incentiveTravel,
   },
   {
     title: "Team-building & Experiential Programs",
     desc: "Custom team development activities and workshops to boost engagement and performance.",
-    image: images.teamBuilding,
+    image: serviceImages.teamBuilding,
   },
   {
     title: "Artist Management & Entertainment",
     desc: "End-to-end artist management, talent booking, stage logistics, and live-show coordination.",
-    image: images.artist,
+    image: serviceImages.artistManagement,
   },
   {
     title: "Merchandising & Fulfilment",
     desc: "Branded merchandise, sourcing, inventory, and distribution for events and R&R programs.",
-    image: images.merch,
+    image: serviceImages.merchandising,
   },
   {
     title: "Hybrid & Tech Solutions",
     desc: "Virtual/hybrid platforms, live streaming, event apps, and analytics for wider reach and measurement.",
-    image: images.hybrid,
+    image: serviceImages.hybridTech,
   },
   {
-    title: "Risk & Operations",
+    title: "Risk Management & Logistics",
     desc: "Ground handling, security planning, and contingency management for smooth execution.",
-    image: images.conference,
+    image: serviceImages.riskOperations,
   },
   {
     title: "Turnkey Event Packages",
     desc: "Conference, awards, product launches, and exhibition packages covering venue, production, and catering.",
-    image: images.conference,
+    image: serviceImages.turnkeyEvent,
   },
   {
     title: "Custom Incentive Journeys",
     desc: "Scalable incentive trip templates tailored by budget and duration.",
-    image: images.incentive,
+    image: serviceImages.customIncentive,
   },
   {
     title: "Transport & Logistics Blocks",
     desc: "Group transfer and fleet solutions for conferences and incentive groups.",
-    image: images.travel,
+    image: serviceImages.transportLogistics,
   },
   {
     title: "Reporting Dashboard",
     desc: "Post-event metrics, engagement analytics, and ROI summaries.",
-    image: images.hybrid,
+    image: serviceImages.reportingDashboard,
   },
 ];
 

@@ -142,19 +142,16 @@ export default function Clients() {
               {testimonials.map((item, index) => (
                 <article
                   key={`${item.name}-${index}`}
-                  className="w-[min(88vw,420px)] shrink-0 rounded-[2rem] border border-white/10 bg-gradient-to-br from-blue-950 via-blue-900 to-ink-950 p-6 shadow-card sm:p-8 lg:p-10"
+                  className="group w-[min(88vw,420px)] shrink-0 rounded-[2rem] border border-white/10 bg-gradient-to-br from-blue-950 via-blue-900 to-ink-950 p-6 shadow-card sm:p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(249,115,22,0.12)] hover:ring-1 hover:ring-orange-300/20"
                 >
                   <div className="relative">
-                    <Quote className="absolute -top-2 left-0 h-10 w-10 text-orange-300/40" />
+                    <Quote className="absolute -top-2 left-0 h-10 w-10 text-orange-300/40 transition-colors group-hover:text-orange-300/75" />
                     <p className="pt-7 text-base leading-7 text-blue-50 sm:pt-8 sm:text-xl sm:leading-9">
                       {item.quote}
                     </p>
-                    <div className="mt-8 flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-white/12 ring-1 ring-white/15" />
-                      <div>
-                        <p className="font-semibold text-white">{item.name}</p>
-                        <p className="text-sm text-blue-200">{item.role}</p>
-                      </div>
+                    <div className="mt-8">
+                      <p className="font-semibold text-white">{item.name}</p>
+                      <p className="text-sm text-blue-200">{item.role}</p>
                     </div>
                   </div>
                 </article>

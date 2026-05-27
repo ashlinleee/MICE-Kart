@@ -37,12 +37,9 @@ export default function TestimonialCarousel({
           <p className="pt-7 text-base leading-7 text-blue-50 sm:pt-8 sm:text-xl sm:leading-9">
             {current.quote}
           </p>
-          <div className="mt-8 flex items-center gap-4">
-            <div className="h-12 w-12 rounded-full bg-white/12 ring-1 ring-white/15" />
-            <div>
-              <p className="font-semibold text-white">{current.name}</p>
-              <p className="text-sm text-blue-200">{current.role}</p>
-            </div>
+          <div className="mt-8">
+            <p className="font-semibold text-white">{current.name}</p>
+            <p className="text-sm text-blue-200">{current.role}</p>
           </div>
         </motion.div>
       </AnimatePresence>

@@ -343,7 +343,7 @@ export default function Home() {
                   >
                     <Link
                       to="/services"
-                      className="group block h-full overflow-hidden rounded-3xl border border-ink-200 bg-white shadow-card transition hover:-translate-y-1 hover:shadow-card-hover"
+                      className="group block h-full overflow-hidden rounded-3xl border border-blue-300/20 bg-gradient-to-br from-blue-950 via-blue-900 to-ink-950 shadow-card transition hover:-translate-y-1 hover:border-orange-300/70 hover:shadow-[0_20px_48px_rgba(249,115,22,0.22)]"
                     >
                       <div className="relative h-56 overflow-hidden">
                         <SafeImage
@@ -353,16 +353,12 @@ export default function Home() {
                           decoding="sync"
                           className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/25 to-transparent" />
-                        <span className="absolute left-4 top-4 rounded-full bg-orange-500 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                          Service
-                        </span>
                       </div>
                       <div className="p-5 sm:p-6">
-                        <h3 className="font-display text-xl font-bold text-ink-950">
+                        <h3 className="font-display text-xl font-bold text-white transition-colors group-hover:text-orange-200">
                           {s.title}
                         </h3>
-                        <p className="mt-3 text-sm leading-6 text-ink-600">
+                        <p className="mt-3 text-sm leading-6 text-blue-100/90">
                           {s.desc}
                         </p>
                       </div>
