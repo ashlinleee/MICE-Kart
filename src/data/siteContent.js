@@ -268,7 +268,7 @@ export const team = [
     name: "Latish Shetty",
     role: "Sales Manager",
     bio: "Brings strong expertise in client relations, business development, and strategic sales management, driving revenue growth and lasting partnerships across the MICE corporate travel and events industry.",
-    image: u("photo-1507003211169-0a1dd7228f2d", 600, 750),
+    imageKey: "latish",
   },
 ];
 

@@ -18,12 +18,14 @@ import SafeImage from "../components/ui/SafeImage";
 import RotatingFadeImage from "../components/ui/RotatingFadeImage";
 import { images, about, vision, mission, usp, team } from "../data/siteContent";
 import gavinImage from "../../gavin.jpeg";
-import abhishekImage from "../../abhiskek.png";
+import abhishekImage from "../../abhishek.jpeg";
+import latishImage from "../../latish.png";
 import aboutBannerBg from "../../aboutbanner_bg.png";
 
 const localPhotos = {
   gavin: gavinImage,
   abhishek: abhishekImage,
+  latish: latishImage,
 };
 
 const aboutSectionImages = Object.entries(
@@ -200,7 +202,7 @@ export default function About() {
       </section>
 
       {/* 1. Who we are */}
-      <section className="section-pad py-[120px] bg-white">
+      <section className="pt-[80px] pb-[80px] bg-white">
         <div className="page-container">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <motion.div
@@ -256,7 +258,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="mt-8 lg:mt-10">
+          <div className="mt-12 lg:mt-16">
             <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1fr_auto_1fr] lg:gap-4">
               {/* Vision Card */}
               <motion.div

@@ -236,7 +236,10 @@ export default function Services() {
         </div>
       </section>
 
-      <section id="services-list" className="section-pad bg-transparent">
+      <section
+        id="services-list"
+        className="py-[50px] bg-white/85 backdrop-blur-sm"
+      >
         <div className="page-container">
           <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (

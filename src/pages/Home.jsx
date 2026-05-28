@@ -155,7 +155,7 @@ export default function Home() {
 
         <Marquee />
 
-        <section className="section-pad bg-white/75 backdrop-blur-sm">
+        <section className="py-[50px] bg-white/75 backdrop-blur-sm">
           <div className="page-container grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <motion.div
               initial={{ opacity: 0, x: -24 }}
