@@ -16,6 +16,7 @@ import Marquee from "../components/ui/Marquee";
 import AnimatedCounter from "../components/ui/AnimatedCounter";
 import TestimonialCarousel from "../components/ui/TestimonialCarousel";
 import SafeImage from "../components/ui/SafeImage";
+import RotatingFadeImage from "../components/ui/RotatingFadeImage";
 import {
   images,
   stats,
@@ -28,6 +29,15 @@ import {
   testimonials,
   clientLogos,
 } from "../data/siteContent";
+
+const homeSectionImages = Object.entries(
+  import.meta.glob("/home_img/*.{png,jpg,jpeg,webp}", {
+    eager: true,
+    import: "default",
+  }),
+)
+  .sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath))
+  .map(([, src]) => src);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -151,12 +161,17 @@ export default function Home() {
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="photo-frame"
+              className="photo-frame group aspect-[4/3]"
             >
-              <SafeImage
-                src={images.heroAbout}
+              <RotatingFadeImage
+                images={
+                  homeSectionImages.length
+                    ? homeSectionImages
+                    : [images.heroAbout]
+                }
                 alt="MICEkart corporate events"
-                className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105"
+                className="h-full w-full"
+                imageClassName="transition duration-700 group-hover:scale-105"
               />
             </motion.div>
             <div>

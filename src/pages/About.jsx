@@ -15,6 +15,7 @@ import SectionHeading from "../components/SectionHeading";
 import AnimatedCounter from "../components/ui/AnimatedCounter";
 import TeamCard from "../components/ui/TeamCard";
 import SafeImage from "../components/ui/SafeImage";
+import RotatingFadeImage from "../components/ui/RotatingFadeImage";
 import { images, about, vision, mission, usp, team } from "../data/siteContent";
 import gavinImage from "../../gavin.jpeg";
 import abhishekImage from "../../abhiskek.png";
@@ -24,6 +25,15 @@ const localPhotos = {
   gavin: gavinImage,
   abhishek: abhishekImage,
 };
+
+const aboutSectionImages = Object.entries(
+  import.meta.glob("/about_img/*.{png,jpg,jpeg,webp}", {
+    eager: true,
+    import: "default",
+  }),
+)
+  .sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath))
+  .map(([, src]) => src);
 
 function getTeamImage(member) {
   if (member.imageKey && localPhotos[member.imageKey])
@@ -197,12 +207,17 @@ export default function About() {
               initial={{ x: -12 }}
               whileInView={{ x: 0 }}
               viewport={{ once: true }}
-              className="photo-frame relative group overflow-hidden rounded-3xl"
+              className="photo-frame group aspect-[4/3]"
             >
-              <SafeImage
-                src={images.office}
+              <RotatingFadeImage
+                images={
+                  aboutSectionImages.length
+                    ? aboutSectionImages
+                    : [images.office]
+                }
                 alt="MICEKART office"
-                className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105 rounded-2xl"
+                className="h-full w-full"
+                imageClassName="transition duration-700 group-hover:scale-105"
               />
             </motion.div>
 
