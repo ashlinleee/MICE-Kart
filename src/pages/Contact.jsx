@@ -51,10 +51,10 @@ export default function Contact() {
             </div>
             <h1 className="max-w-[40ch] font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
               <span className="block text-white">
-                Your Next Experience Starts Here
+                Your Next Experience Awaits
               </span>
               <span className="block text-orange-500">
-                Let’s Build Something Exceptional
+                Let’s Create Something Exceptional
               </span>
             </h1>
             <p className="mt-6 max-w-[36rem] text-base leading-7 text-blue-100">
@@ -81,7 +81,7 @@ export default function Contact() {
               viewport={{ once: true }}
               className="mx-auto max-w-xl font-display text-3xl font-bold text-ink-950 sm:text-4xl md:mx-0"
             >
-              Get Your Instant Free Quote Now
+              Get Your Quote Now
             </motion.h2>
             <motion.p
               variants={fadeUp}
@@ -267,7 +267,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="block text-center text-sm font-semibold tracking-wide text-ink-900"
             >
-              MICE KART - Corporate Travel & Events
+              MICEkart - Corporate Travel & Events
             </a>
           </div>
         </div>

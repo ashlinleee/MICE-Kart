@@ -93,7 +93,7 @@ const whyChooseDetails = [
   },
   {
     title: "End-to-End Support",
-    desc: "A dedicated team committed to seamless communication and 24/7 support.",
+    desc: "A dedicated team committed to seamless communication and reliable support.",
     icon: Headphones,
     color: "#FF8A1E",
   },

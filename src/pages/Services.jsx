@@ -40,31 +40,7 @@ const formFields = [
   },
 ];
 
-const fallbackHighlights = [
-  "Strategy & planning",
-  "On-ground execution",
-  "Operational control",
-  "Experience management",
-];
-
-function getServiceHighlights(desc) {
-  const parts = desc
-    .replace(/\.$/, "")
-    .split(/,|\s+and\s+|\s*&\s*|\s*\/\s*/gi)
-    .map((item) => item.trim())
-    .filter(Boolean);
-
-  const unique = Array.from(new Set(parts));
-  if (unique.length >= 4) return unique.slice(0, 4);
-
-  const merged = [...unique];
-  for (const item of fallbackHighlights) {
-    if (merged.length === 4) break;
-    if (!merged.includes(item)) merged.push(item);
-  }
-
-  return merged.slice(0, 4);
-}
+// Removed unused helper `getServiceHighlights` and its fallback data.
 
 function ServiceFormModal({ serviceTitle, onClose }) {
   useEffect(() => {
@@ -216,10 +192,10 @@ export default function Services() {
             </div>
             <h1 className="max-w-[40ch] font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
               <span className="block text-white">
-                Designed for Every Corporate Experience
+                Built for Corporate Experiences
               </span>
               <span className="block text-orange-500">
-                From Planning to Perfect Execution
+                Planned to Perfection
               </span>
             </h1>
             <p className="mt-6 max-w-[36rem] text-base leading-7 text-blue-100">
@@ -270,9 +246,6 @@ export default function Services() {
                   </h3>
                   <p className="mt-4 text-base leading-8 text-blue-100/85">
                     {s.desc}
-                    <span className="ml-1 text-blue-50/95">
-                      {getServiceHighlights(s.desc).join(". ")}
-                    </span>
                   </p>
                 </div>
               </motion.button>

@@ -194,7 +194,7 @@ export default function Home() {
           <div className="page-container mt-14">
             <SectionHeading
               label="Clients"
-              title="Clients We’ve Worked With"
+              title="Clients We Have Worked With"
               light
               center
             />
@@ -391,7 +391,6 @@ export default function Home() {
               <SectionHeading
                 label="Testimonials"
                 title="What clients say"
-                subtitle="A short rotation of client feedback, shown one testimonial at a time and updated softly on a five-second timer."
                 light
               />
             </div>
