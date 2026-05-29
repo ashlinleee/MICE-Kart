@@ -10,7 +10,7 @@ import {
   Users,
   ShieldCheck,
 } from "../components/Icons";
-import heroPic from "/hero-image.png";
+import heroPic from "../../Images/Banner_images/hero-image.png";
 import SectionHeading from "../components/SectionHeading";
 import Marquee from "../components/ui/Marquee";
 import AnimatedCounter from "../components/ui/AnimatedCounter";
@@ -31,7 +31,7 @@ import {
 } from "../data/siteContent";
 
 const homeSectionImages = Object.entries(
-  import.meta.glob("/home_img/*.{png,jpg,jpeg,webp}", {
+  import.meta.glob("/Images/home_img/*.{png,jpg,jpeg,webp}", {
     eager: true,
     import: "default",
   }),

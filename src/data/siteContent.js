@@ -1,15 +1,17 @@
-import corporateTravelImage from "../../services_images/Corporate Travel Management.png";
-import meetingsConferencesImage from "../../services_images/Meetings, Conferences & Product Launches.png";
-import incentiveTravelImage from "../../services_images/Incentive Travel : Reward & Recognition.png";
-import teamBuildingImage from "../../services_images/Team-building & Experiential Programs.png";
-import artistManagementImage from "../../services_images/Artist Management & Entertainment.png";
-import merchandisingImage from "../../services_images/Merchandising & Fulfilment.png";
-import hybridTechImage from "../../services_images/Hybrid & Tech Solutions.png";
-import riskOperationsImage from "../../services_images/Risk & Operations.png";
-import turnkeyEventImage from "../../services_images/Turnkey Event Packages.png";
-import customIncentiveImage from "../../services_images/Custom Incentive Journeys.png";
-import transportLogisticsImage from "../../services_images/Transport & Logistics Blocks.png";
-import reportingDashboardImage from "../../services_images/Reporting Dashboard.png";
+import corporateTravelImage from "../../Images/services_images/Corporate Travel Management.png";
+import meetingsConferencesImage from "../../Images/services_images/Meetings, Conferences & Product Launches.png";
+import incentiveTravelImage from "../../Images/services_images/Incentive Travel : Reward & Recognition.png";
+import teamBuildingImage from "../../Images/services_images/Team-building & Experiential Programs.png";
+import artistManagementImage from "../../Images/services_images/Artist Management & Entertainment.png";
+import merchandisingImage from "../../Images/services_images/Merchandising & Fulfilment.png";
+import hybridTechImage from "../../Images/services_images/Hybrid & Tech Solutions.png";
+import riskOperationsImage from "../../Images/services_images/Risk & Operations.png";
+import turnkeyEventImage from "../../Images/services_images/Turnkey Event Packages.png";
+import customIncentiveImage from "../../Images/services_images/Custom Incentive Journeys.png";
+import transportLogisticsImage from "../../Images/services_images/Transport & Logistics Blocks.png";
+import reportingDashboardImage from "../../Images/services_images/Reporting Dashboard.png";
+import rashmiImage from "../../Images/Team_images/rashmi.png";
+import haneenImage from "../../Images/Team_images/haneen.png";
 
 export const company = {
   name: "MICEkart Pvt. Ltd.",
@@ -256,13 +258,13 @@ export const team = [
     name: "Rashmi D'Costa",
     role: "Head of HR",
     bio: "Brings extensive experience in human resources, talent management, and organisational development. She drives employee engagement and strengthens leadership and team development initiatives across the organisation.",
-    image: u("photo-1573496359142-b8d87734a5a2", 600, 750),
+    image: rashmiImage,
   },
   {
     name: "Haneen Shaikh",
     role: "Operations Manager",
     bio: "Oversees operational strategy and execution with 8+ years of experience and strong expertise in process management and travel/event coordination, ensuring seamless delivery and exceptional client experiences.",
-    image: u("photo-1580489944761-15a19d654956", 600, 750),
+    image: haneenImage,
   },
   {
     name: "Latish Shetty",

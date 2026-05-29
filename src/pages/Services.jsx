@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SafeImage from "../components/ui/SafeImage";
-import servicesBanner from "../../services_banner.png";
+import servicesBanner from "../../Images/Banner_images/services_banner.png";
 import {
   ArrowRight,
   BadgeCheck,

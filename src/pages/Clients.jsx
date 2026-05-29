@@ -5,7 +5,7 @@ import SectionHeading from "../components/SectionHeading";
 import SafeImage from "../components/ui/SafeImage";
 import { Quote } from "../components/Icons";
 import { ChevronLeft, ChevronRight } from "../components/Icons";
-import clientBanner from "../../client_banner.png";
+import clientBanner from "../../Images/Banner_images/client_banner.png";
 import { images, clientLogos, testimonials } from "../data/siteContent";
 
 const fadeUp = {

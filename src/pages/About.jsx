@@ -17,10 +17,10 @@ import TeamCard from "../components/ui/TeamCard";
 import SafeImage from "../components/ui/SafeImage";
 import RotatingFadeImage from "../components/ui/RotatingFadeImage";
 import { images, about, vision, mission, usp, team } from "../data/siteContent";
-import gavinImage from "../../gavin.jpeg";
-import abhishekImage from "../../abhishek.jpeg";
-import latishImage from "../../latish.png";
-import aboutBannerBg from "../../aboutbanner_bg.png";
+import gavinImage from "../../Images/Team_images/gavin.jpeg";
+import abhishekImage from "../../Images/Team_images/abhishek.jpeg";
+import latishImage from "../../Images/Team_images/latish.png";
+import aboutBannerBg from "../../Images/Banner_images/aboutbanner_bg.png";
 
 const localPhotos = {
   gavin: gavinImage,
@@ -29,7 +29,7 @@ const localPhotos = {
 };
 
 const aboutSectionImages = Object.entries(
-  import.meta.glob("/about_img/*.{png,jpg,jpeg,webp}", {
+  import.meta.glob("/Images/about_img/*.{png,jpg,jpeg,webp}", {
     eager: true,
     import: "default",
   }),

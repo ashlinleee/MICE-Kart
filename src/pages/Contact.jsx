@@ -14,7 +14,7 @@ import {
   Quote,
 } from "../components/Icons";
 import GlowCard from "../components/ui/GlowCard";
-import contactBanner from "../../contact_banner.png";
+import contactBanner from "../../Images/Banner_images/contact_banner.png";
 import { images, company } from "../data/siteContent";
 
 const fadeUp = {
