@@ -49,10 +49,10 @@ export const whyChooseUs = [
 ];
 
 export const vision =
-  "To be the most trusted partner for organizations that create impactful, memorable corporate events and travel experiences.";
+  "To be the most trusted and preferred end-to-end MICE solutions partner, delivering exceptional experiences through service excellence, innovation, and unwavering commitment to client satisfaction. We envision creating seamless, impactful, and memorable meetings, incentives, conferences, and events that inspire success, foster meaningful connections, and exceed expectations at every stage of the journey.";
 
 export const mission =
-  "To empower organizations to achieve their business and cultural goals through thoughtfully designed corporate travel and MICE programs that connect people, deepen relationships, and turn every event into a meaningful driver of performance and growth.";
+  "To provide comprehensive, one-stop MICE solutions that simplify event planning and execution for our clients. Through meticulous attention to detail, personalized service, strong industry partnerships, and a passion for excellence, we deliver seamless experiences from concept to completion. We are committed to building lasting relationships by consistently exceeding expectations and ensuring every event achieves its strategic objectives.";
 
 export const usp =
   "Our goal is to make corporate travel and event planning easier, smarter, and more efficient for every client. We provide seamless corporate travel and MICE solutions, combining strategic planning, flawless event execution, and personalized experiences to create impactful business events, conferences, incentives, and corporate journeys that drive engagement and growth.";

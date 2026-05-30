@@ -13,7 +13,7 @@ export default function PageHero({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative overflow-hidden bg-mesh-warm py-20 sm:py-28"
+      className="relative overflow-hidden bg-mesh-warm py-10 sm:py-14"
     >
       <div className="noise-overlay absolute inset-0" />
       <motion.div

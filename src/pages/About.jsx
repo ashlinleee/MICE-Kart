@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BarChart3, Headphones } from "lucide-react";
+import {
+  BarChart3,
+  Lightbulb,
+  MessageCircle,
+  Settings,
+  TrendingUp,
+  Workflow,
+  Headphones,
+} from "lucide-react";
 import {
   Sparkles,
   Plane,
@@ -75,7 +83,7 @@ const whyChooseDetails = [
   },
   {
     title: "Execution Excellence",
-    desc: "On-ground precision across logistics, venue coordination, vendor management, and delegate experience.",
+    desc: "From concept to completion. Turning plans into flawless experiences through precision and excellence.",
     icon: Plane,
     color: "#355DA8",
   },
@@ -86,16 +94,43 @@ const whyChooseDetails = [
     color: "#FF8A1E",
   },
   {
-    title: "Measurable Impact",
-    desc: "Clear post-event reporting and insights to track engagement, outcomes, and ROI.",
+    title: "Innovation & Reliability",
+    desc: "Driving exceptional outcomes through innovation, expertise, and unwavering reliability.",
     icon: BarChart3,
     color: "#355DA8",
   },
   {
-    title: "End-to-End Support",
-    desc: "A dedicated team committed to seamless communication and reliable support.",
+    title: "One - Stop MICE Solutions",
+    desc: "End-to-End services under one roof, simplifying the planning process and delivering complete peace of mind.",
     icon: Headphones,
     color: "#FF8A1E",
+  },
+];
+
+const ourPromise = [
+  {
+    text: "Client-first approach in everything we do.",
+    icon: Users,
+  },
+  {
+    text: "Seamless end-to-end event management solutions.",
+    icon: Workflow,
+  },
+  {
+    text: "Consistent service excellence and operational efficiency.",
+    icon: Settings,
+  },
+  {
+    text: "Innovative and customized event experiences.",
+    icon: Lightbulb,
+  },
+  {
+    text: "Transparent communication and dependable execution.",
+    icon: MessageCircle,
+  },
+  {
+    text: "Measurable value and exceptional client satisfaction",
+    icon: TrendingUp,
   },
 ];
 
@@ -134,7 +169,7 @@ function AboutHeroBanner() {
       </div>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,37,84,0.88)_0%,rgba(10,10,10,0.75)_100%)]" />
 
-      <div className="page-container relative z-10 flex min-h-[82vh] items-center pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36">
+      <div className="page-container relative z-10 flex min-h-[60vh] items-center pb-8 pt-16 sm:min-h-[64vh] sm:pb-10 sm:pt-20 lg:min-h-[68vh] lg:pb-12 lg:pt-24">
         <motion.div
           initial={{ opacity: 0, x: -24 }}
           animate={{ opacity: 1, x: 0 }}
@@ -202,7 +237,7 @@ export default function About() {
       </section>
 
       {/* 1. Who we are */}
-      <section className="pt-[80px] pb-[80px] bg-white">
+      <section className="pt-[80px] pb-[30px] bg-white">
         <div className="page-container">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <motion.div
@@ -365,8 +400,46 @@ export default function About() {
           </div>
         </div>
       </section>
+      {/* Our Promise - cards (inserted above Leadership & Team) */}
+      <section className="section-pad py-8 bg-white">
+        <div className="page-container">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group text-center"
+          >
+            <h2 className="font-display text-3xl font-bold text-[#10245A] sm:text-xl lg:text-5xl">
+              Our Promise
+            </h2>
+            <span className="mx-auto mt-4 block h-1 w-16 origin-left scale-x-0 rounded-full bg-gradient-to-r from-[#FF8A1E] to-[#F5A000] transition-transform duration-500 ease-out group-hover:scale-x-100" />
+          </motion.div>
+
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {ourPromise.map(({ text, icon: Icon }, i) => (
+              <motion.div
+                key={`promise-${i}`}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                className="group relative flex h-full items-start gap-4 overflow-hidden rounded-[28px] border border-slate-100 bg-white px-6 py-6 text-left shadow-[0_14px_34px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#355DA8] hover:shadow-[0_20px_40px_rgba(27,77,186,0.08)] hover:bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)]"
+              >
+                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(53,93,168,0.03),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-[#355DA8] text-white shadow-[0_10px_24px_rgba(53,93,168,0.22)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_14px_30px_rgba(53,93,168,0.3)]">
+                  <Icon size={20} strokeWidth={2} className="text-white" />
+                </span>
+                <p className="relative z-10 mt-1 text-base leading-6 text-slate-700 transition-colors duration-300 group-hover:text-slate-900">
+                  {text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. Leadership & Team */}
-      <section className="section-pad pt-4 pb-10 bg-white">
+      <section className="section-pad py-12 bg-white">
         <div className="page-container">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -397,7 +470,7 @@ export default function About() {
       </section>
 
       {/* 5. Why Choose MICEkart */}
-      <section className="section-pad py-16 bg-white">
+      <section className="section-pad py-12 bg-white">
         <div className="page-container">
           <motion.div
             initial={{ opacity: 0, y: 16 }}

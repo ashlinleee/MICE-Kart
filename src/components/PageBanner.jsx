@@ -75,8 +75,8 @@ export default function PageBanner({
     <section
       className={`relative flex items-end overflow-hidden bg-blue-950 ${
         tall
-          ? "min-h-[70vh] sm:min-h-[78vh] lg:min-h-[92vh]"
-          : "min-h-[52vh] sm:min-h-[60vh] lg:min-h-[68vh]"
+          ? "min-h-[48vh] sm:min-h-[54vh] lg:min-h-[62vh]"
+          : "min-h-[36vh] sm:min-h-[42vh] lg:min-h-[48vh]"
       }`}
     >
       <motion.div
@@ -95,8 +95,8 @@ export default function PageBanner({
           center
             ? "page-container relative z-10 w-full flex min-h-full items-center justify-center text-center"
             : hasGallery
-              ? "page-container relative z-10 grid w-full gap-10 pb-12 pt-24 sm:pb-20 sm:pt-32 lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,0.92fr)] lg:items-center lg:gap-14 lg:pt-36"
-              : "page-container relative z-10 w-full pb-12 pt-24 sm:pb-20 sm:pt-32 lg:pt-36"
+              ? "page-container relative z-10 grid w-full gap-10 pb-6 pt-12 sm:pb-10 sm:pt-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,0.92fr)] lg:items-center lg:gap-14 lg:pt-20"
+              : "page-container relative z-10 w-full pb-6 pt-12 sm:pb-10 sm:pt-16 lg:pt-20"
         }
       >
         <div className={hasGallery && !center ? "max-w-3xl" : ""}>

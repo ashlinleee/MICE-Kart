@@ -14,24 +14,17 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
 
   useEffect(() => setOpen(false), [pathname]);
 
-  const isLightState = scrolled || open;
+  const isLightState = true;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b ${
         isLightState
-          ? "border-ink-200 bg-white/90 py-3 shadow-card backdrop-blur-md"
+          ? "border-ink-200 bg-white/90 py-2 shadow-card backdrop-blur-md"
           : "border-transparent bg-transparent py-5"
       }`}
     >
@@ -42,19 +35,19 @@ export default function Header() {
               <img
                 src={logo}
                 alt="MICEkart"
-                className="h-10 w-auto sm:h-11 rounded-lg"
+                className="h-11 w-auto origin-left rounded-lg scale-105 sm:h-12 sm:scale-110"
               />
             </Link>
           </div>
 
-          <nav className="hidden items-center justify-center gap-8 lg:flex">
+          <nav className="hidden items-center justify-center gap-10 lg:flex">
             {navLinks.map(([to, label]) => {
               const active = pathname === to;
               return (
                 <Link
                   key={to}
                   to={to}
-                  className={`border-b-2 px-1 py-2 text-sm font-semibold transition-colors duration-300 ${
+                  className={`border-b-2 px-1 py-2 text-base font-semibold transition-colors duration-300 ${
                     active
                       ? isLightState
                         ? "border-orange-500 text-orange-500"
@@ -73,7 +66,7 @@ export default function Header() {
           <div className="flex items-center justify-self-end gap-4">
             <Link
               to="/contact"
-              className="btn-orange hidden !px-5 !py-2.5 text-xs lg:inline-flex"
+              className="btn-orange hidden !px-6 !py-3 text-sm lg:inline-flex"
             >
               Enquire
             </Link>
@@ -109,7 +102,7 @@ export default function Header() {
                   >
                     <Link
                       to={to}
-                      className={`block rounded-lg px-3 py-3 font-semibold transition-colors ${
+                      className={`block rounded-lg px-3 py-3 text-lg font-semibold transition-colors ${
                         pathname === to
                           ? "bg-ink-50 text-orange-500"
                           : "text-ink-700 hover:bg-ink-50"

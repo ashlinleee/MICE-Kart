@@ -180,7 +180,7 @@ export default function Services() {
         </div>
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,37,84,0.88)_0%,rgba(10,10,10,0.75)_100%)]" />
 
-        <div className="page-container relative z-10 flex min-h-[82vh] items-end pb-8 pt-28 sm:pb-12 sm:pt-32 lg:pb-12 lg:pt-36">
+        <div className="page-container relative z-10 flex min-h-[60vh] items-end pb-4 pt-16 sm:min-h-[64vh] sm:pb-6 sm:pt-20 lg:min-h-[68vh] lg:pb-8 lg:pt-24">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             animate={{ opacity: 1, x: 0 }}
