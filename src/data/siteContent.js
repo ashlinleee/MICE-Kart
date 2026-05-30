@@ -20,7 +20,7 @@ export const company = {
   phone: "+91 91674 99293",
   phoneTel: "+919167499293",
   address:
-    "Neelkanth Business Park, A-704, Vidyavihar station skywalk, Sadguru Nagar, Neelkanth Kingdom, Vidyavihar West, Vidyavihar, Mumbai, Maharashtra 400086",
+    "A-704, Neelkanth Business Park, Vidyavihar West, Mumbai, Maharashtra 400086",
   mapQuery: "Neelkanth Business Park Vidyavihar Mumbai",
   social: {
     instagram: "https://www.instagram.com/micekart/",

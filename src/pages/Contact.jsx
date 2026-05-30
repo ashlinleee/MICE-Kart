@@ -158,9 +158,8 @@ export default function Contact() {
               </span>
               <div className="text-left">
                 <p className="text-base font-semibold tracking-wide text-ink-900 sm:text-sm">
-                  Neelkanth Business Park, A-704, Vidyavihar station skywalk,
-                  Sadguru Nagar, Neelkanth Kingdom, Vidyavihar West, Vidyavihar,
-                  Mumbai, Maharashtra 400086
+                  A-704, Neelkanth Business Park, Vidyavihar West, Mumbai,
+                  Maharashtra 400086
                 </p>
               </div>
             </motion.div>
