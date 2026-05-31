@@ -129,7 +129,7 @@ const ourPromise = [
     icon: MessageCircle,
   },
   {
-    text: "Measurable value and exceptional client satisfaction",
+    text: "Measurable value and exceptional client satisfaction.",
     icon: TrendingUp,
   },
 ];
@@ -210,23 +210,23 @@ export default function About() {
     <div>
       <AboutHeroBanner />
 
-      <section className="relative z-20 -mt-16 px-4 sm:-mt-20">
+      <section className="relative z-20 -mt-6 px-4 sm:-mt-20">
         <div className="page-container">
           <div className="relative mx-auto w-full max-w-7xl overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,27,72,0.98)_0%,rgba(11,45,104,0.96)_100%)] px-5 py-4 shadow-[0_24px_80px_rgba(7,20,49,0.3)] backdrop-blur-xl sm:px-8 sm:py-5">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,122,26,0.16),transparent_18%),radial-gradient(circle_at_88%_18%,rgba(255,122,26,0.12),transparent_16%)]" />
             <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4 xl:gap-5">
               {impactStats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-3xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.11)_0%,rgba(255,255,255,0.06)_38%,rgba(7,27,72,0.18)_100%)] px-4 py-4 text-center shadow-[0_10px_24px_rgba(7,20,49,0.14)] sm:px-5 sm:py-5"
+                  className="min-h-[96px] rounded-3xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.11)_0%,rgba(255,255,255,0.06)_38%,rgba(7,27,72,0.18)_100%)] px-3 py-3 text-center shadow-[0_10px_24px_rgba(7,20,49,0.14)] sm:min-h-0 sm:px-5 sm:py-5"
                 >
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}
-                    className="text-orange-400"
+                    className="scale-90 text-orange-400 sm:scale-100 sm:text-3xl"
                   />
-                  <p className="mt-2 text-sm font-semibold leading-6 text-white/85">
+                  <p className="mt-2 text-[11px] font-semibold leading-4 text-white/85 sm:text-sm sm:leading-6">
                     {stat.label}
                   </p>
                 </div>
@@ -409,13 +409,13 @@ export default function About() {
             viewport={{ once: true }}
             className="group text-center"
           >
-            <h2 className="font-display text-3xl font-bold text-[#10245A] sm:text-xl lg:text-5xl">
+            <h2 className="font-display text-3xl font-bold text-[#10245A] sm:text-4xl lg:text-5xl">
               Our Promise
             </h2>
             <span className="mx-auto mt-4 block h-1 w-16 origin-left scale-x-0 rounded-full bg-gradient-to-r from-[#FF8A1E] to-[#F5A000] transition-transform duration-500 ease-out group-hover:scale-x-100" />
           </motion.div>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
             {ourPromise.map(({ text, icon: Icon }, i) => (
               <motion.div
                 key={`promise-${i}`}
@@ -423,13 +423,17 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04 }}
-                className="group relative flex h-full items-start gap-4 overflow-hidden rounded-[28px] border border-slate-100 bg-white px-6 py-6 text-left shadow-[0_14px_34px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#355DA8] hover:shadow-[0_20px_40px_rgba(27,77,186,0.08)] hover:bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)]"
+                className="group relative flex h-full min-w-0 items-start gap-3 overflow-hidden rounded-[28px] border border-slate-100 bg-white px-4 py-5 text-left shadow-[0_14px_34px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#355DA8] hover:shadow-[0_20px_40px_rgba(27,77,186,0.08)] hover:bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] sm:gap-4 sm:px-6 sm:py-6"
               >
                 <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(53,93,168,0.03),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-[#355DA8] text-white shadow-[0_10px_24px_rgba(53,93,168,0.22)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_14px_30px_rgba(53,93,168,0.3)]">
-                  <Icon size={20} strokeWidth={2} className="text-white" />
+                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-[#355DA8] text-white shadow-[0_10px_24px_rgba(53,93,168,0.22)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_14px_30px_rgba(53,93,168,0.3)] sm:h-12 sm:w-12">
+                  <Icon
+                    size={18}
+                    strokeWidth={2}
+                    className="text-white sm:size-5"
+                  />
                 </span>
-                <p className="relative z-10 mt-1 text-base leading-6 text-slate-700 transition-colors duration-300 group-hover:text-slate-900">
+                <p className="relative z-10 mt-0.5 text-sm leading-6 text-slate-700 transition-colors duration-300 group-hover:text-slate-900 sm:text-base">
                   {text}
                 </p>
               </motion.div>

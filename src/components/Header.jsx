@@ -29,8 +29,8 @@ export default function Header() {
       }`}
     >
       <div className="page-container">
-        <div className="grid items-center gap-4 lg:grid-cols-[auto,1fr,auto]">
-          <div className="justify-self-start">
+        <div className="flex items-center justify-between gap-4">
+          <div className="shrink-0">
             <Link to="/" className="shrink-0">
               <img
                 src={logo}
@@ -63,7 +63,7 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="flex items-center justify-self-end gap-4">
+          <div className="flex items-center gap-4">
             <Link
               to="/contact"
               className="btn-orange hidden !px-6 !py-3 text-sm lg:inline-flex"
@@ -92,27 +92,35 @@ export default function Header() {
               exit={{ height: 0, opacity: 0 }}
               className="overflow-hidden lg:hidden"
             >
-              <div className="flex flex-col gap-1 border-t border-ink-100 py-4 mt-3">
-                {navLinks.map(([to, label], i) => (
-                  <motion.div
-                    key={to}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.04 }}
-                  >
-                    <Link
-                      to={to}
-                      className={`block rounded-lg px-3 py-3 text-lg font-semibold transition-colors ${
-                        pathname === to
-                          ? "bg-ink-50 text-orange-500"
-                          : "text-ink-700 hover:bg-ink-50"
-                      }`}
+              <div className="mt-3 rounded-3xl border border-ink-100 bg-white/95 p-3 shadow-card backdrop-blur-md">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {navLinks.map(([to, label], i) => (
+                    <motion.div
+                      key={to}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.04 }}
+                      className={
+                        to === "/contact" ? "col-span-2 sm:col-span-1" : ""
+                      }
                     >
-                      {label}
-                    </Link>
-                  </motion.div>
-                ))}
-                <Link to="/contact" className="btn-orange mt-2 text-center">
+                      <Link
+                        to={to}
+                        className={`block rounded-2xl px-4 py-3 text-base font-semibold transition-colors ${
+                          pathname === to
+                            ? "bg-ink-50 text-orange-500"
+                            : "text-ink-700 hover:bg-ink-50"
+                        }`}
+                      >
+                        {label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+                <Link
+                  to="/contact"
+                  className="btn-orange mt-3 w-full text-center"
+                >
                   Enquire Now
                 </Link>
               </div>

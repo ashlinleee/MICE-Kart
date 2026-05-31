@@ -23,8 +23,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-blue-900/30 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 text-white">
       <div className="page-container py-14 lg:py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 items-start">
-          <div>
+        <div className="grid grid-cols-2 gap-8 items-start md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          <div className="col-span-2 lg:col-span-1">
             <h3 className="font-display text-2xl font-bold text-white">
               MICEkart
             </h3>
@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="col-span-1">
             <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-blue-200">
               Explore
             </h4>
@@ -84,7 +84,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-1">
             <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-blue-200">
               Contact
             </h4>
@@ -108,7 +108,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="pt-2">
+          <div className="col-span-2 pt-2 lg:col-span-1 lg:pt-0">
             <div className="overflow-hidden rounded-2xl border border-white/10">
               <iframe
                 title="MICEkart office location"

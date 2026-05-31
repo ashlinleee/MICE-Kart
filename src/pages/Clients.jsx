@@ -88,17 +88,17 @@ export default function Clients() {
 
         <section className="section-pad bg-white">
           <div className="page-container">
-            <div className="mt-0 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+            <div className="mt-0 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
               {clientLogos.map((client) => (
                 <div
                   key={client.name}
-                  className="flex items-center justify-center rounded-xl bg-white p-6 shadow-card transition hover:scale-105"
+                  className="flex items-center justify-center rounded-xl bg-white p-4 shadow-card transition hover:scale-105 sm:p-6"
                   title={client.name}
                 >
                   <img
                     src={client.src}
                     alt={client.name}
-                    className="h-20 w-full object-contain transition duration-300"
+                    className="h-14 w-full object-contain transition duration-300 sm:h-20"
                   />
                 </div>
               ))}

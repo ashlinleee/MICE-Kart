@@ -8,7 +8,7 @@ export default function Marquee() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#ff8a00]/38 via-[#ffb13b]/30 to-[#ff7a00]/38" />
       <div className="pointer-events-none absolute inset-0 bg-[#ff9f2a]/20" />
 
-      <div className="relative flex animate-marquee whitespace-nowrap">
+      <div className="relative flex animate-marquee whitespace-nowrap [animation-duration:18s] sm:[animation-duration:30s]">
         {doubled.map((item, i) => (
           <span
             key={`${item}-${i}`}

@@ -261,7 +261,7 @@ export default function Home() {
               light
               center
             />
-            <ul className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+            <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-5 sm:gap-6 lg:grid-cols-4 lg:gap-10">
               {whyChoosePoints.map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -272,14 +272,14 @@ export default function Home() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="flex flex-col items-center text-center"
+                    className="flex min-w-0 flex-col items-center text-center"
                   >
                     <Icon
-                      size={40}
+                      size={34}
                       className="text-orange-400"
                       strokeWidth={1.7}
                     />
-                    <span className="mt-4 max-w-[18rem] text-lg font-semibold leading-8 text-blue-50">
+                    <span className="mt-3 max-w-[14rem] text-sm font-semibold leading-6 text-blue-50 sm:max-w-[16rem] sm:text-base sm:leading-7">
                       {item.text}
                     </span>
                   </motion.li>
